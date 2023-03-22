@@ -63,10 +63,10 @@
 
 </head>
 
-<body class="h-screen bg-gray-100 font-sans" style="background-image:url('img/bggray.png'); background-size:cover;">
-
+<body class="h-screen bg-gray-100 font-sans" style="">
+<!-- background-image:url('img/bggray.png'); background-size:cover;  -->
     <!--menu-->
-    <div id="sidebar" class=" h-screen w-12 menu bg-black text-white px-2 flex items-center nunito static fixed shadow overflow-hidden">
+    <div id="sidebar" class=" h-screen w-10 menu bg-black text-white px-1 flex items-top nunito static fixed shadow overflow-hidden">
 
    
 
@@ -80,12 +80,12 @@
             </li>
 
             <li class="my-2 md:my-0">
-                <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-gray-300 no-underline hover:text-indigo-200">
+                <a href="{{url('dashboard')}}" class="block py-1 md:py-3 pl-1 align-middle text-gray-300 no-underline hover:text-indigo-200">
                     <i class="fas fa-home fa-fw mr-3"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">Inicio</span>
                 </a>
             </li>
             <li class="my-2 md:my-0 ">
-                <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
+                <a href="{{url('menu_sistema')}}" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
                     <i class="fas fa-cog fa-fw mr-3"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">Sistema</span>
                 </a>
             </li>

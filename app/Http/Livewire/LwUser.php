@@ -7,6 +7,12 @@ use App\Models\User;
 
 class LwUser extends Component
 {
+    public function delete(User $user){
+      $user->delete();
+
+    }
+
+
     public function render()
     {
       

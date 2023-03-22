@@ -26,6 +26,12 @@ Route::get('/dashboard', function () {
    
 })->middleware(['auth', 'verified','cors'])->name('dashboard');
 
+Route::get('/menu_sistema', function () {
+    return view('menu_sistema');
+   
+})->middleware(['auth', 'verified','cors'])->name('menu_sistema');
+
+
 Route::get('/user', LwUser::class)->middleware(['auth','verified','cors'])->name('user');
 
 Route::middleware('auth')->group(function () {
