@@ -4,14 +4,14 @@
 <div class="flex flex-wrap">
    @foreach ($list as $item)
   
-   <div class="bg-white w-72 border-2 border-gray-300 rounded-lg  mr-2 mt-4">
-         <div class="bg-indigo-200 text-black p-2 ">
+   <div class="bg-white w-72  border-gray-100  mr-2 mt-4 shadow-lg hover:shadow-none rounded-sm">
+         <div class="bg-indigo-700 text-indigo-100 p-2 ">
             {{$item->name}} 
             
            
             <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                    <button class="  float-right hover:bg-indigo-300 rounded-full p-1">
+                    <button class="  float-right hover:bg-indigo-900 rounded-full p-1">
                     <i class="fa fa-ellipsis-v fa-fw  float-right"></i>    
                             </button>
 

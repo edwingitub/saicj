@@ -73,14 +73,14 @@
 
         <ul class="list-reset ">
         <li class="my-2 md:my-0">
-                <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
+                <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-gray-200 no-underline hover:text-indigo-100">
                 <img class="w-6 h-6 rounded-full inline-block mr-2" src="http://i.pravatar.cc/300" alt="Avatar of User">
                 <span class="w-full inline-block pb-1 md:pb-0 text-sm text-white">{{ Auth::user()->name }} </span>
                 </a>
             </li>
 
             <li class="my-2 md:my-0">
-                <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
+                <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-gray-300 no-underline hover:text-indigo-200">
                     <i class="fas fa-home fa-fw mr-3"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">Inicio</span>
                 </a>
             </li>
