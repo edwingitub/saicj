@@ -63,15 +63,15 @@
 
 </head>
 
-<body class="h-screen bg-gray-100 font-sans" style="">
+<body class="h-screen bg-gray-100 font-sans p-0">
 <!-- background-image:url('img/bggray.png'); background-size:cover;  -->
     <!--menu-->
-    <div id="sidebar" class=" h-screen w-10 menu bg-black text-white px-1 flex items-top nunito static fixed shadow overflow-hidden">
+    <div id="sidebar" class=" h-screen w-10 menu bg-black text-white px-1 py-0 flex items-top nunito static fixed shadow overflow-hidden">
 
    
 
 
-        <ul class="list-reset ">
+        <ul class="list-reset">
         <li class="my-2 md:my-0">
                 <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-gray-200 no-underline hover:text-indigo-100">
                 <img class="w-6 h-6 rounded-full inline-block mr-2" src="http://i.pravatar.cc/300" alt="Avatar of User">
@@ -135,7 +135,7 @@
     <!--fin menu-->
 
 
-    @include('layouts.navigation')
+   <!-- include('layouts.navigation') -->
    
 
 
@@ -148,7 +148,7 @@
                
         
 
-    </div>
+   
 
     <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
     

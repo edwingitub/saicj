@@ -1,5 +1,5 @@
 <x-app-layout>
-    <h1 class="ml-12 text-4xl mt-10 mb-10"> Sistema</h1>
+    <<div class="ml-12 text-4xl mt-6 mb-10"> Sistema</div>
 
     <div class="ml-12 flex flex-wrap gap-6">
 

@@ -24,8 +24,14 @@ class UserSeeder extends Seeder
             'password' => Hash::make('12345678'),
         ]);
 
+        DB::table('users')->insert([
+            'name' => 'Marvin Miranda',
+            'email' => 'marvin.miranda@icj.gob.sv',
+            'password' => Hash::make('12345678'),
+        ]);
+
        
-       // User::factory() ->count(50)->create();
+       User::factory() ->count(50)->create();
         
     }
 }
