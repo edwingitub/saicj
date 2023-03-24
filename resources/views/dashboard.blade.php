@@ -1,21 +1,86 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+    <div class="bg-gray-700 shadow-lg font-bold text-gray-300 text-sm p-2 fixed w-full">
+        <span>Inicio</span>
+        <span class="float-right pr-14">SAICJ V.1</span><br>
 
-    
+        
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
+    </div>
 
-                    @livewire('counter')
-                </div>
-            </div>
-        </div>
+
+    <div class="flex"></div>
+    <div class="text-4xl mb-10 ml-11 mt-24">Inicio</div>
+
+
+    <div class="ml-12 flex flex-wrap gap-10 w-1/2">
+
+
+        <a href="{{ url('menu_sistema') }}" >
+            <div class=" overflow-hidden w-60 flex flex-col justify-center text-center">
+                <i class="fas fa-cube fa-fw text-6xl m-auto text-orange-500 "></i>
+                <span class="text-1xl">Sistema</span>
+            </div>  
+        </a>
+
+        <a href="{{ url('menu_sistema') }}" >
+            <div class=" overflow-hidden w-60 flex flex-col justify-center text-center">
+                <i class="fas fa-cube fa-fw text-6xl m-auto text-orange-500 "></i>
+                <span class="text-1xl">  Administración</span>
+            </div>   
+        </a>
+
+        <a href="{{ url('menu_sistema') }}" >
+            <div class=" overflow-hidden w-60 flex flex-col justify-center text-center">
+                <i class="fas fa-cube fa-fw text-6xl m-auto text-orange-500 "></i>
+                <span class="text-1xl"> Recursos Humanos</span>
+            </div>   
+        </a>
+        
+        <a href="{{ url('menu_sistema') }}" >
+            <div class=" overflow-hidden w-60 flex flex-col justify-center text-center">
+                <i class="fas fa-cube fa-fw text-6xl m-auto text-orange-500 "></i>
+                <span class="text-1xl"> Activo Fijo</span>
+            </div>   
+        </a>
+
+        <a href="{{ url('menu_sistema') }}" >
+            <div class=" overflow-hidden w-60 flex flex-col justify-center text-center">
+                <i class="fas fa-cube fa-fw text-6xl m-auto text-orange-500 "></i>
+                <span class="text-1xl">  Vehículos</span>
+            </div>   
+        </a>
+
+        <a href="{{ url('menu_sistema') }}" >
+            <div class=" overflow-hidden w-60 flex flex-col justify-center text-center">
+                <i class="fas fa-cube fa-fw text-6xl m-auto text-orange-500 "></i>
+                <span class="text-1xl">   Equipo Informática</span>
+            </div>   
+        </a>
+
+        <a href="{{ url('menu_sistema') }}" >
+            <div class=" overflow-hidden w-60 flex flex-col justify-center text-center">
+                <i class="fas fa-cube fa-fw text-6xl m-auto text-orange-500 "></i>
+                <span class="text-1xl">   Servicios</span>
+            </div>   
+        </a>
+
+        
+        <a href="{{ url('menu_sistema') }}" >
+            <div class=" overflow-hidden w-60 flex flex-col justify-center text-center">
+                <i class="fas fa-cube fa-fw text-6xl m-auto text-orange-500 "></i>
+                <span class="text-1xl">    Planificación</span>
+            </div>   
+        </a>
+
+        
+
+       
+
+       
+
+       
+
+
+
     </div>
 </x-app-layout>

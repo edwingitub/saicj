@@ -63,7 +63,7 @@
 
 </head>
 
-<body class="h-screen bg-gray-100 font-sans p-0">
+<body class="h-screen bg-gray-500 font-sans p-0 " style="background-image:url('img/bggray.png'); background-size:cover;background-attachment: fixed;">
 <!-- background-image:url('img/bggray.png'); background-size:cover;  -->
     <!--menu-->
     <div id="sidebar" class=" h-screen w-10 menu bg-black text-white px-1 py-0 flex items-top nunito static fixed shadow overflow-hidden">
@@ -71,7 +71,7 @@
    
 
 
-        <ul class="list-reset">
+        <ul class="list-reset font-bold">
         <li class="my-2 md:my-0">
                 <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-gray-200 no-underline hover:text-indigo-100">
                 <img class="w-6 h-6 rounded-full inline-block mr-2" src="http://i.pravatar.cc/300" alt="Avatar of User">
@@ -80,53 +80,65 @@
             </li>
 
             <li class="my-2 md:my-0">
-                <a href="{{url('dashboard')}}" class="block py-1 md:py-3 pl-1 align-middle text-gray-300 no-underline hover:text-indigo-200">
+                <a href="{{url('dashboard')}}" class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-indigo-100 ">
                     <i class="fas fa-home fa-fw mr-3"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">Inicio</span>
                 </a>
             </li>
             <li class="my-2 md:my-0 ">
-                <a href="{{url('menu_sistema')}}" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
+                <a href="{{url('menu_sistema')}}" class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-indigo-100">
                     <i class="fas fa-cog fa-fw mr-3"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">Sistema</span>
                 </a>
             </li>
             <li class="my-2 md:my-0">
-                <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
+                <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-indigo-100 ">
                     <i class="fa fa-list fa-fw mr-3"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">Administración</span>
                 </a>
             </li>
             <li class="my-2 md:my-0">
-                <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
+                <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-indigo-100 ">
                     <i class="fas fa-users fa-fw mr-3"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">R. Humanos</span>
                 </a>
             </li>
             <li class="my-2 md:my-0">
-                <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
+                <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-indigo-100 ">
                     <i class="fa fa-cubes fa-fw mr-3"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">Activo Fijo</span>
                 </a>
             </li>
 
             <li class="my-2 md:my-0">
-                <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
+                <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-indigo-100 ">
                     <i class="fa fa-car fa-fw mr-3"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">Vehículos</span>
                 </a>
             </li>
 
             <li class="my-2 md:my-0">
-                <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
+                <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-indigo-100 ">
                     <i class="fa fa-laptop fa-fw mr-3"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">Equipo TI</span>
                 </a>
             </li>
 
             <li class="my-2 md:my-0">
-                <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
+                <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-indigo-100 ">
                     <i class="fa fa-wrench fa-fw mr-3"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">Servicios</span>
                 </a>
             </li>
 
             <li class="my-2 md:my-0">
-                <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-400">
+                <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-indigo-100 ">
                     <i class="fa fa-clock  fa-fw mr-3"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">Planificación</span>
                 </a>
+            </li>
+
+            <li class="my-2 text-sm">
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    
+                    <a href="route('logout')" class="block py-1 md:py-3 pl-1 align-middle text-gray-600 no-underline hover:text-indigo-100 "
+                            onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                      <i class="fa fa-arrow-left fa-fw mr-3"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">Salir</span>
+                </a>
+                </form>
             </li>
         </ul>
 
@@ -138,11 +150,11 @@
    <!-- include('layouts.navigation') -->
    
 
-
+       <div class="ml-10">
             <main>
                 {{ $slot }}
             </main>
-        
+        </div>     
 
        
                

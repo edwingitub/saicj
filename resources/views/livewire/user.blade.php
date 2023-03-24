@@ -1,30 +1,67 @@
 <div>
 
-<div class="ml-14  rounded-lg  text-sm overflow-auto">
-    <div class="text-2xl mb-10 mt-6">Usuarios</div>
-    <a href="#" wire:click="create" class="bg-indigo-500 text-white  p-2 {{$vtable}} w-28">
+    <div class="bg-gray-700 shadow-lg font-bold text-gray-300 text-sm  fixed w-full">
+        <span><a href="{{url("dashboard")}}">Inicio</a> / <a href="{{url('menu_sistema')}}">Sistema</a> / Usuario</span>
+        <span class="float-right pr-14">SAICJ V.1</span><br>
+
+        <i class="fa fa-search fa-fw absolute pt-3 "></i><input id="search" name="search" wire:model="search" placeholder="Buscar" class="pl-6 bg-transparent border-0 focus:outline-none w-full p-2" ><br>
+        
+        <div>
+
+            @if (session()->has('message'))
+    
+                <div class="bg-green-600 text-green-200 p-2 ">
+                    <i class="fa fa-info-circle"></i>
+    
+                    {{ session('message') }}
+
+                    <a href="#" wire:click="clear_message"><i class="fa fa-times fa-fw float-right mr-10"></i></a>
+    
+                </div>
+    
+            @endif
+    
+        </div>
+    </div>
+    <div class="bg-indigo-300 pl-3 pr-10 text-sm fixed bottom-0 w-full"> {{ $list->links() }}</div>
+
+
+
+    <div class="border-b flex">
+   
+    </div>
+
+
+
+    <div class="text-4xl mb-10 ml-11 mt-24">Usuarios</div>
+
+
+    <a href="#" wire:click="create" class="bg-indigo-500 text-white  p-2 ml-12 mb-5 {{$vtable}} w-28">
         <i class="fa fa-plus fa-fw "></i>Nuevo
     </a> 
 
     
     <!--LISTA -->
 
+ 
+   
+    <div class="flex flex-wrap gap-14 ml-10 p-2 {{$vtable}}">
 
-    <div class="flex flex-wrap {{$vtable}}">
+      
 
         @foreach ($list as $item)
 
 
         <!--tarjeta -->
-            <div class="lg:w-1/3 w-full" wire:key={{$item->id}}>
-                <div class="border-gray-200   lg:mr-10 mr-1  mt-6    border-gray-300 shadow-lg ">
+            <div class="lg:w-1/4 w-full " wire:key={{$item->id}}>
+                <div class="border-gray-200        border-gray-300 shadow-lg ">
 
                     <!-- tema -->
                     <div class="bg-indigo-200 text-gray-700 p-2  text-lg">
                         <i class="fa fa-key fa-fw"></i> <b> {{ $item->name }} </b>
                     </div>
                      <!-- detalle -->
-                    <div class=" bg-white p-1 pb-10">
+                    <div class=" bg-white p-2 pb-10">
                         <i class="fa fa-envelope fa-fw"></i> {{ $item->email }}
                     </div>
 
@@ -48,28 +85,57 @@
              <!--fin tarjeta -->
         @endforeach
     </div> <!-- fin lista -->
+
+   
     
      <!-- formulario -->
-    <div class="{{$vform}} bg-white mr-10 mt-5 p-5 flex flex-col shadow-lg">
-        <input wire:model="my_id" placeholder="Id" class="bg-indigo 100 border 2 mt-2 p-2 bg-indigo-100"><br>
-        <span class="font-bold">Nombre</span>
-        <input  wire:model="name" placeholder="Nombre" class="bg-indigo 100 border 2 mt-2 p-2 bg-indigo-100"><br>
-        <span class="font-bold">Email</span>
-        <input  wire:model="email" placeholder="Correo" class="bg-indigo 100 border 2 mt-2 p-2 bg-indigo-100"><br>
-        <span class="font-bold">Password</span>
-        <input  wire:model="password" placeholder="Contraseña" class="bg-indigo 100 border 2 mt-2 p-2 bg-indigo-100"><br>
+     <form wire:submit.prevent="submit">
+    <div class="{{$vform}} bg-white mr-10 mt-5 ml-10 flex flex-col shadow-lg lg:w-1/4">
 
-        <div class="flex flex-wrap gap-2">
+ 
+         @if($vmode=="insert")
+        <div class="bg-indigo-300 font-bold p-2 text-center"> Nuevo Usuario</div>
+         @else
+         <div class="bg-indigo-300 font-bold p-2 text-center">Modificar Usuario</div>
+          @endif
+        
+        <div class="m-3 flex flex-col">
+            <span class="font-bold">Id</span>
+        <input id="my_id" name="my_id" wire:model="my_id" placeholder="Id" class="hidden"><br>{{$my_id}}
+        </div>
+
+
+        <div class="m-3 flex flex-col">
+        <span class="font-bold">Nombre</span>
+        <input  id="name" name="name" wire:model="name" placeholder="Nombre" class="bg-indigo 100    p-2 bg-indigo-100"><br>
+         @error('name') <span class="error text-red-600">{{ $message }}</span> @enderror
+        </div>
+
+        <div class="m-3 flex flex-col">
+        <span class="font-bold">Email</span>
+        <input  id="email" name="email"   wire:model="email" placeholder="Correo" class="bg-indigo 100    p-2 bg-indigo-100"><br>
+         @error('email') <span class="error  text-red-600">{{ $message }}</span> @enderror
+        </div>
+
+        <div class="m-3 flex flex-col">
+        <span class="font-bold">Password</span>
+        <input   id="password" name="password" wire:model="password" placeholder="Contraseña" class="bg-indigo 100  p-2 bg-indigo-100"><br>
+        @error('password') <span class="error text-red-600 ">{{ $message }}</span> @enderror
+        </div>
+        
+        <div class="flex flex-wrap gap-2 justify-center">
 
          @if($vmode=="insert")   
-           <button wire:click="store" class="bg-indigo-500 text-white m-2 p-2 w-32 text-center font-bold"><i class="fa fa-check fa-fw"></i> Crear</button>
+           <a href="#" wire:click="store" class="bg-indigo-500 text-white m-2 p-2 w-32 text-center font-bold"><i class="fa fa-check fa-fw"></i> Crear</a>
         @else
-           <button wire:click="update" class="bg-indigo-500 text-white m-2 p-2 w-32 ">Modificar</button>
+           <a href="#" wire:click="update" class="bg-indigo-500 text-white m-2 p-2 w-32 ">Modificar</button>
         @endif
 
         <a href="#" wire:click="cancel" class="bg-green-500 text-white m-2 p-2 w-32 text-center font-bold"><i class="fa fa-reply fa-fw>"></i> Cancelar</a>
           </div>
-    </div>
+       </div>
+   
 
-</div>
+
+</form>
 </div>
