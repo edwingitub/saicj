@@ -9,32 +9,29 @@
 
 
     <div class="flex"></div>
-    <div class="text-4xl mb-10 ml-10 mt-24"><a href="{{url('dashboard')}}"><i class="fa fa-arrow-circle-left fa-fw"></i></a> Sistema</div>
+    <div class="text-4xl mb-10 ml-10 mt-24"><i class="fa fa-cube fa-fw"></i> Administración</div>
 
 
     <div class="ml-2 flex flex-wrap  gap-10">
 
-
-
-       
         <a href="{{ url('user') }}" >
             <div class=" overflow-hidden w-60 flex flex-col justify-center text-center hover:scale-110">
-                <i class="fas fa-folder fa-fw text-6xl m-auto text-orange-500 "></i>
-                <span class="text-1xl">Usuarios</span>
+                <i class="fas fas fa-th-list fa-fw text-6xl m-auto text-orange-500 "></i>
+                <span class="text-1xl">Puestos Funcionales</span>
+            </div>  
+        </a>
+
+        <a href="{{ url('user') }}" >
+            <div class=" overflow-hidden w-60 flex flex-col justify-center text-center hover:scale-110">
+                <i class="fas fa-th-list fa-fw text-6xl m-auto text-orange-500 "></i>
+                <span class="text-1xl">Unidades organizativas</span>
             </div>  
         </a>
 
         <a href="{{ url('user') }}" >
             <div class=" overflow-hidden w-60 flex flex-col justify-center text-center hover:scale-110">
                 <i class="fas fa-folder fa-fw text-6xl m-auto text-orange-500 "></i>
-                <span class="text-1xl">Roles</span>
-            </div>  
-        </a>
-
-        <a href="{{ url('user') }}" >
-            <div class=" overflow-hidden w-60 flex flex-col justify-center text-center hover:scale-110">
-                <i class="fas fa-folder fa-fw text-6xl m-auto text-orange-500 "></i>
-                <span class="text-1xl">Menú</span>
+                <span class="text-1xl">Personas</span>
             </div>  
         </a>
 
@@ -47,3 +44,11 @@
     </div>
 
 </x-app-layout>
+
+
+
+           
+
+
+
+

@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class LwUser extends Component
 {
@@ -14,6 +15,7 @@ public $my_id=0;
 public $name="";
 public $email="";
 public $password="";
+public $password_confirm="";
 
 public $vtable='block';
 public $vform='hidden';
@@ -24,14 +26,15 @@ protected $rules = [
 
   'name' => 'required|min:6',
   'email' => 'required|email',
-  'password' => 'required|min:8'
+  'password' => 'required|min:8',
+  'password_confirm' =>'required|same:password'
 ];
 
 protected $messages = [
   'name.required' => 'Falta nombre.',
   'email.required' => 'Falta correo.',
   'password.required' =>'Falta password',
-
+  'password_confirm.same' =>'Los password no coinciden',
 ];
 
 public function  create(){
@@ -46,7 +49,7 @@ public function  create(){
    $obj= new User();
    $obj->name=$this->name;
    $obj->email=$this->email;
-   $obj->password=$this->password;
+   $obj->password=Hash::make($this->password);
    $obj->save();
 
    $this->vtable='block';
@@ -63,7 +66,8 @@ $obj=User::find($id);
 $this->my_id=$obj->id;
 $this->name=$obj->name;
 $this->email=$obj->email;
-$this->password=$obj->password;
+$this->password="";
+//$this->password=$obj->password;
 
 $this->vtable='hidden';
 $this->vform="block";
@@ -77,7 +81,7 @@ public function update(){
    $obj= User::find($this->my_id);
    $obj->name=$this->name;
    $obj->email=$this->email;
-   $obj->password=$this->password;
+   $obj->password=Hash::make($this->password);
    $obj->save();
    $this->vtable='block';
    $this->vform="hidden";
@@ -103,7 +107,7 @@ public function update(){
     private function default(){
 
       $this->resetValidation();
-      $this->reset(['my_id','name','email','password','vform','vtable','vmode']);
+      $this->reset(['my_id','name','email','password','password_confirm','vform','vtable','vmode']);
 
     }
 
@@ -115,8 +119,8 @@ public function update(){
     public function render()
     {
       
-       $list=User::where('name',"like","%".$this->search."%")->paginate(9);
-        return view('livewire.user')
+       $list=User::where('name',"like","%".$this->search."%")->paginate(15);
+        return view('livewire.lwuser')
                ->with("list",$list);
     }
 }

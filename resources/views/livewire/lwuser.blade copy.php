@@ -33,17 +33,30 @@
 
 
 
-    <div class="text-4xl mb-10 ml-11 mt-24">Usuarios</div>
+    <div class="text-4xl mb-10 ml-11 mt-24"> Usuarios</div>
 
 
-    <a href="#" wire:click="create" class="bg-indigo-500 text-white  p-2 ml-12 mb-5 {{$vtable}} w-28">
-        <i class="fa fa-plus fa-fw "></i>Nuevo
+    <a href="#" wire:click="create" class="bg-indigo-500 text-white  p-2 ml-12 mb-5 {{$vtable}} w-24 hover:opacity-80">
+        <i class="fa fa-plus fa-fw "></i> Nuevo
     </a> 
 
     
     <!--LISTA -->
 
- 
+ <x-icj.folderlist>
+    <x-slot:header>
+        alguna cosa
+   </x-slot:header>
+    <x-slot:detail>
+    alguna cosa2
+     </x-slot:detail>
+     <x-slot:options>
+        alguna cosa3
+         </x-slot:options>
+
+ </x-icj.folderlist1>
+
+
    
     <div class="flex flex-wrap gap-14 ml-10 p-2 {{$vtable}}">
 
@@ -54,31 +67,39 @@
 
         <!--tarjeta -->
             <div class="lg:w-1/4 w-full " wire:key={{$item->id}}>
-                <div class="border-gray-200        border-gray-300 shadow-lg ">
+                <div class="border-gray-200        border-gray-300 shadow-lg hover:scale-105 hover:shadow-2xl border-b border-l border-orange-400  ">
+
+                    <div class="h-5 w-32 bg-orange-300 rounded-tr-lg"></div>
 
                     <!-- tema -->
-                    <div class="bg-indigo-200 text-gray-700 p-2  text-lg">
+                    <div class="bg-orange-300 text-orange-900 p-2  text-lg bg-orange-300 border-b-2  border-orange-400">
                         <i class="fa fa-key fa-fw"></i> <b> {{ $item->name }} </b>
+                        <span class="float-right text-sm font-bold text-orange-900">{{$item->id}}</span>
                     </div>
                      <!-- detalle -->
-                    <div class=" bg-white p-2 pb-10">
-                        <i class="fa fa-envelope fa-fw"></i> {{ $item->email }}
+                    <div class=" bg-orange-100 p-2 pb-10 ">
+                        <span class="text-gray-700"> <i class="fa fa-envelope fa-fw"></i> {{ $item->email }}</span><br>
+                       <span class="font-bold text-xs text-orange-700"> <i class="fa fa-lock fa-fw"></i> {{ $item->role->name }}</span>
                     </div>
 
                      <!-- opciónes -->
-                    <div class="flex flex-wrap justify-end bg-white">
+                     <div class="flex flex-wrap justify-end bg-orange-100">
 
-                       <!-- update -->
-                       <button wire:click="edit({{$item->id}})"  class=" p-2   text-blue-700 hover:bg-blue-200 m-1">
-                        <i class="fa fa-pen fa-fw"></i>   
-                       </button>
+                        
 
-                       <!-- delete -->
-                       <a href=# wire:click="delete({{$item->id}})"  class=" p-2   text-red-700 hover:bg-red-200 m-1" onclick="confirm('¿Esta seguro de eliminar?') || event.stopImmediatePropagation()">
-                         <i class="fa fa-trash fa-fw"></i>  
-                       </a>
+                        <!-- update -->
+                        <button wire:click="edit({{$item->id}})"  class=" p-2   text-blue-700 hover:bg-blue-200 m-1">
+                         <i class="fa fa-pen fa-fw"></i>   
+                        </button>
+ 
+                        <!-- delete -->
+                        <a href=# wire:click="delete({{$item->id}})"  class=" p-2   text-red-700 hover:bg-red-200 m-1" onclick="confirm('¿Esta seguro de eliminar?') || event.stopImmediatePropagation()">
+                          <i class="fa fa-trash fa-fw"></i>  
+                        </a>
+ 
+                      </div>
 
-                     </div>
+                    
 
                 </div>
             </div>
@@ -119,9 +140,15 @@
 
         <div class="m-3 flex flex-col">
         <span class="font-bold">Password</span>
-        <input   id="password" name="password" wire:model="password" placeholder="Contraseña" class="bg-indigo 100  p-2 bg-indigo-100"><br>
+        <input  type="password" id="password" name="password" wire:model="password" placeholder="Contraseña" class="bg-indigo 100  p-2 bg-indigo-100"><br>
         @error('password') <span class="error text-red-600 ">{{ $message }}</span> @enderror
         </div>
+
+        <div class="m-3 flex flex-col">
+            <span class="font-bold">Repita Password</span>
+            <input   type="password" id="password_confirm" name="password_confirm" wire:model="password_confirm" placeholder="Confirmar Contraseña" class="bg-indigo 100  p-2 bg-indigo-100"><br>
+            @error('password_confirm') <span class="error text-red-600 ">{{ $message }}</span> @enderror
+            </div>
         
         <div class="flex flex-wrap gap-2 justify-center">
 

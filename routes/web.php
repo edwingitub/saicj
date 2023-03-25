@@ -16,7 +16,7 @@ use App\Http\Livewire\LwUser;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
 
@@ -26,13 +26,16 @@ Route::get('/dashboard', function () {
    
 })->middleware(['auth', 'verified','cors'])->name('dashboard');
 
-Route::get('/menu_sistema', function () {
-    return view('menu_sistema');
-   
-})->middleware(['auth', 'verified','cors'])->name('menu_sistema');
 
 
-Route::get('/user', LwUser::class)->middleware(['auth','verified','cors'])->name('user');
+
+Route::middleware('auth', 'verified','cors')->group(function () {
+
+    Route::get('/menu_sistema', function () {return view('menu_sistema'); })->name('menu_sistema');
+    Route::get('/menu_administracion', function () {return view('menu_administracion'); })->name('menu_administracion');
+
+    Route::get('/user', LwUser::class)->name('user');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

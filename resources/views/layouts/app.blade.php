@@ -63,7 +63,7 @@
 
 </head>
 
-<body class="h-screen bg-gray-500 font-sans p-0 " style="background-image:url('img/bggray.png'); background-size:cover;background-attachment: fixed;">
+<body class="h-screen bg-gray-500 font-sans p-0 " style="background-image:url('img/bggray.png'); background-size:cover; background-attachment: fixed;">
 <!-- background-image:url('img/bggray.png'); background-size:cover;  -->
     <!--menu-->
     <div id="sidebar" class=" h-screen w-10 menu bg-black text-white px-1 py-0 flex items-top nunito static fixed shadow overflow-hidden">
@@ -90,7 +90,7 @@
                 </a>
             </li>
             <li class="my-2 md:my-0">
-                <a href="#" class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-indigo-100 ">
+                <a href="{{url('menu_administracion')}}" class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-indigo-100 ">
                     <i class="fa fa-list fa-fw mr-3"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">Administración</span>
                 </a>
             </li>
