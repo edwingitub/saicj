@@ -6,22 +6,24 @@
 
         <i class="fa fa-search fa-fw absolute pt-3 "></i><input id="search" name="search" wire:model="search" placeholder="Buscar" class="pl-6 bg-transparent border-0 focus:outline-none w-full p-2" ><br>
         
+ 
+
         <div>
 
             @if (session()->has('message'))
-    
+            
                 <div class="bg-green-600 text-green-200 p-2 ">
                     <i class="fa fa-info-circle"></i>
-    
+            
                     {{ session('message') }}
-
+            
                     <a href="#" wire:click="clear_message"><i class="fa fa-times fa-fw float-right mr-10"></i></a>
-    
+            
                 </div>
-    
+            
             @endif
-    
-        </div>
+            
+            </div>
     </div>
     <div class="bg-indigo-300 pl-3 pr-10 text-sm fixed bottom-0 w-full"> {{ $list->links() }}</div>
 
@@ -42,17 +44,9 @@
 
     
     <!--LISTA -->
-
- 
-
-
-   
     <div class="flex flex-wrap gap-14 ml-10 p-2 {{$vtable}}">
 
-      
-
         @foreach ($list as $item)
-
 
         <x-icj.item-folder>
             <x-slot:header>
@@ -64,21 +58,15 @@
                 <span class="text-black"> <i class="fa fa-lock fa-fw"></i> {{ $item->role->name }}</span>
              </x-slot:detail>
              <x-slot:options>
-                  <!-- update -->
-                  <button href=# wire:click="edit({{$item->id}})"  class=" p-2   text-blue-700 hover:bg-blue-200 m-1">
-                    <i class="fa fa-pen fa-fw"></i>   
-                  </button>
-        
-                   <!-- delete -->
-                   <button href=# wire:click="delete({{$item->id}})"  class=" p-2   text-red-700 hover:bg-red-200 m-1" onclick="confirm('¿Esta seguro de eliminar?') || event.stopImmediatePropagation()">
-                     <i class="fa fa-trash fa-fw"></i>  
-                   </button>
+
+                  <x-icj.button-icon-update :my_id="$item->id" />
+                  <x-icj.button-icon-delete :my_id="$item->id" />   
+
              </x-slot:options>   
+
          </x-icj.item-folder>
 
-             <!--fin tarjeta -->
-
-        @endforeach
+          @endforeach
     </div> <!-- fin lista -->
 
    
@@ -86,60 +74,35 @@
      <!-- formulario -->
      
     <div class="{{$vform}} bg-white mr-10 mt-5 ml-10 flex flex-col shadow-lg lg:w-1/4">
+     
+        <div class="bg-indigo-300 font-bold p-2 text-center"> 
+            @if($vmode=="insert")
+            Nuevo Usuario
+            @else
+            Modificar Usuario
+            @endif
+        </div>
+             
+      
 
- 
-         @if($vmode=="insert")
-        <div class="bg-indigo-300 font-bold p-2 text-center"> Nuevo Usuario</div>
-         @else
-         <div class="bg-indigo-300 font-bold p-2 text-center">Modificar Usuario</div>
-          @endif
+        <x-icj.input-txt label="Id" value="my_id" type="hidden" />
+        <span class="ml-3">{{$my_id}}</span>
+
+        <x-icj.input-txt label="Nombre" value="name" />
+        <x-icj.input-txt label="Correo" value="email" type="email" />
+
+        <x-icj.input-select label="Rol" value="role_id" :cat="$cat_roles" option_value="id" option_label="name"/>
+
+        <x-icj.input-txt label="Contraseña" value="password" type="password" />
+        <x-icj.input-txt label="Repita Contraseña" value="password_confirm" type="password" />
+
         
-        <div class="m-3 flex flex-col">
-            <span class="font-bold">Id</span>
-        <input id="my_id" name="my_id" wire:model="my_id" placeholder="Id" class="hidden"><br>{{$my_id}}
-        </div>
-
-
-        <div class="m-3 flex flex-col">
-        <span class="font-bold">Nombre</span>
-        <input  id="name" name="name" wire:model="name" placeholder="Nombre" class="bg-indigo 100    p-2 bg-indigo-100"><br>
-         @error('name') <span class="error text-red-600">{{ $message }}</span> @enderror
-        </div>
-
-        <div class="m-3 flex flex-col">
-        <span class="font-bold">Email</span>
-        <input  id="email" name="email"   wire:model="email" placeholder="Correo" class="bg-indigo 100    p-2 bg-indigo-100"><br>
-         @error('email') <span class="error  text-red-600">{{ $message }}</span> @enderror
-        </div>
-
-        <div class="m-3 flex flex-col">
-            <span class="font-bold">Email</span>
-            <select id="role_id" name="role_id"   wire:model="role_id" placeholder="Correo" class="bg-indigo 100    p-2 bg-indigo-100">
-              @foreach($cat_roles as $role)
-              <option value="{{$role->id}}">{{$role->name}}</option>
-              @endforeach  
-            </select>   
-                <br>
-             @error('email') <span class="error  text-red-600">{{ $message }}</span> @enderror
-        </div>
-    
-
-        <div class="m-3 flex flex-col">
-        <span class="font-bold">Password</span>
-        <input  type="password" id="password" name="password" wire:model="password" placeholder="Contraseña" class="bg-indigo 100  p-2 bg-indigo-100"><br>
-        @error('password') <span class="error text-red-600 ">{{ $message }}</span> @enderror
-        </div>
-
-        <div class="m-3 flex flex-col">
-            <span class="font-bold">Repita Password</span>
-            <input   type="password" id="password_confirm" name="password_confirm" wire:model="password_confirm" placeholder="Confirmar Contraseña" class="bg-indigo 100  p-2 bg-indigo-100"><br>
-            @error('password_confirm') <span class="error text-red-600 ">{{ $message }}</span> @enderror
-            </div>
         
         <div class="flex flex-wrap gap-2 justify-center">
 
          @if($vmode=="insert")   
-           <a href="#" wire:click="store" class="bg-indigo-500 text-white m-2 p-2 w-32 text-center font-bold"><i class="fa fa-check fa-fw"></i> Crear</a>
+           <button wire:click="store" class="bg-indigo-500 text-white m-2 p-2 w-32 text-center font-bold">
+           <i class="fa fa-check fa-fw"></i> Crear </button>
         @else
            <button  wire:click="update" class="bg-indigo-500 text-white m-2 p-2 w-32 ">
             <i class="fa fa-save fa-fw>"></i> 

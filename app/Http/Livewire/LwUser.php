@@ -6,9 +6,11 @@ use Livewire\Component;
 use App\Models\User;
 use App\Models\Role;
 use Illuminate\Support\Facades\Hash;
+use Livewire\WithPagination;
 
 class LwUser extends Component
 {
+  use WithPagination;
 
 public $search="";
 
@@ -30,7 +32,7 @@ protected $rules = [
   'name' => 'required|min:6',
   'email' => 'required|email',
   'password' => 'required|min:8',
-  'role_id' => 'required',
+
   'password_confirm' =>'required|same:password'
 ];
 
