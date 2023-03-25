@@ -26,6 +26,6 @@ class formlist2 extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.icj.formlist2');
+        return view('components.icj.item-folder');
     }
 }

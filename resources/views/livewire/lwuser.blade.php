@@ -54,7 +54,7 @@
         @foreach ($list as $item)
 
 
-        <x-icj.formlist2>
+        <x-icj.item-folder>
             <x-slot:header>
                 <i class="fa fa-key fa-fw"></i>  {{ $item->name }}
                 <span class="float-right">{{$item->id}}</span>
@@ -73,9 +73,8 @@
                    <button href=# wire:click="delete({{$item->id}})"  class=" p-2   text-red-700 hover:bg-red-200 m-1" onclick="confirm('¿Esta seguro de eliminar?') || event.stopImmediatePropagation()">
                      <i class="fa fa-trash fa-fw"></i>  
                    </button>
-             </x-slot:options>
-        
-         </x-icj.formlist2>
+             </x-slot:options>   
+         </x-icj.item-folder>
 
              <!--fin tarjeta -->
 
@@ -112,6 +111,18 @@
         <input  id="email" name="email"   wire:model="email" placeholder="Correo" class="bg-indigo 100    p-2 bg-indigo-100"><br>
          @error('email') <span class="error  text-red-600">{{ $message }}</span> @enderror
         </div>
+
+        <div class="m-3 flex flex-col">
+            <span class="font-bold">Email</span>
+            <select id="role_id" name="role_id"   wire:model="role_id" placeholder="Correo" class="bg-indigo 100    p-2 bg-indigo-100">
+              @foreach($cat_roles as $role)
+              <option value="{{$role->id}}">{{$role->name}}</option>
+              @endforeach  
+            </select>   
+                <br>
+             @error('email') <span class="error  text-red-600">{{ $message }}</span> @enderror
+        </div>
+    
 
         <div class="m-3 flex flex-col">
         <span class="font-bold">Password</span>
