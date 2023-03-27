@@ -101,19 +101,11 @@
         <div class="flex flex-wrap gap-2 justify-center">
 
          @if($vmode=="insert")   
-           <button wire:click="store" class="bg-indigo-500 text-white m-2 p-2 w-32 text-center font-bold">
-           <i class="fa fa-check fa-fw"></i> Crear </button>
+            <x-icj.button-store />
         @else
-           <button  wire:click="update" class="bg-indigo-500 text-white m-2 p-2 w-32 ">
-            <i class="fa fa-save fa-fw>"></i> 
-             Modificar
-          </button>
+            <x-icj.button-update/>
         @endif
-
-        <button  wire:click="cancel" class="bg-green-500 text-white m-2 p-2 w-32 text-center font-bold">
-            <i class="fa fa-reply fa-fw>"></i> 
-             Cancelar
-        </button>
+            <x-icj.button-cancel/>
 
           </div>
        </div>
