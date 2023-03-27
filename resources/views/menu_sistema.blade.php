@@ -23,7 +23,7 @@
                 <span class="text-1xl">Usuarios</span>
             </div>  
         </a>
-
+<!--
         <a href="{{ url('user') }}" >
             <div class=" overflow-hidden w-60 flex flex-col justify-center text-center hover:scale-110">
                 <i class="fas fa-folder fa-fw text-6xl m-auto text-orange-500 "></i>
@@ -38,7 +38,7 @@
             </div>  
         </a>
 
-
+    -->
 
            
 

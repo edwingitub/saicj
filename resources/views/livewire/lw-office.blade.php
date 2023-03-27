@@ -35,7 +35,7 @@
 
 
     <!-- TEMA  -->
-    <div class="text-4xl mb-10   ml-11 mt-24"> <a href="{{url('menu_sistema')}}"><i class="fa fa-arrow-circle-left fa-fw"></i></a> Oficinas </div>
+    <div class="text-4xl mb-10   ml-11 mt-24"> <a href="{{url('menu_administracion')}}"><i class="fa fa-arrow-circle-left fa-fw"></i></a> Unidades Organizativas </div>
 
 
     <a href="#" wire:click="create" class="bg-indigo-500 text-white  p-2 ml-12 mb-5 {{$vtable}} w-24 hover:opacity-80">

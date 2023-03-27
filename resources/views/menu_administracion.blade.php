@@ -28,10 +28,10 @@
             </div>  
         </a>
 
-        <a href="{{ url('user') }}" >
+        <a href="{{ url('employee') }}" >
             <div class=" overflow-hidden w-60 flex flex-col justify-center text-center hover:scale-110">
                 <i class="fas fa-folder fa-fw text-6xl m-auto text-orange-500 "></i>
-                <span class="text-1xl">Personas</span>
+                <span class="text-1xl">Empleados</span>
             </div>  
         </a>
 

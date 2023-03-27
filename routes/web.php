@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\LwUser;
 use App\Http\Livewire\LwOffice;
+use App\Http\Livewire\LwEmployee;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,7 @@ Route::middleware('auth', 'verified','cors')->group(function () {
 
     Route::get('/user', LwUser::class)->name('user');
     Route::get('/office', LwOffice::class)->name('office');
+    Route::get('/employee', LwEmployee::class)->name('employee');
 });
 
 Route::middleware('auth')->group(function () {
