@@ -21,7 +21,7 @@
             </div>  
         </a>
 
-        <a href="{{ url('user') }}" >
+        <a href="{{ url('office') }}" >
             <div class=" overflow-hidden w-60 flex flex-col justify-center text-center hover:scale-110">
                 <i class="fas fa-th-list fa-fw text-6xl m-auto text-orange-500 "></i>
                 <span class="text-1xl">Unidades organizativas</span>

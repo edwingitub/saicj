@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\LwUser;
+use App\Http\Livewire\LwOffice;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,7 @@ Route::middleware('auth', 'verified','cors')->group(function () {
     Route::get('/menu_administracion', function () {return view('menu_administracion'); })->name('menu_administracion');
 
     Route::get('/user', LwUser::class)->name('user');
+    Route::get('/office', LwOffice::class)->name('office');
 });
 
 Route::middleware('auth')->group(function () {
