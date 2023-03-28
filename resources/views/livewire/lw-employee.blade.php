@@ -44,26 +44,40 @@
 
     
     <!--LISTA -->
-    <div class="flex flex-wrap gap-14 ml-10 p-2 {{$vtable}}">
+    <div class="flex flex-wrap gap-6 ml-10 p-2 {{$vtable}}">
 
+   
         @foreach ($list as $item)
+        
 
-        <x-icj.item-folder color="indigo">
+        <x-icj.item-card color="indigo" >
+       
+       
+
+
             <x-slot:header>
-             
-                <span class="text-2xl"><i class="fa fa-user fa-fw"></i>  {{ $item->first_name }} {{ $item->first_last_name }}</span>
-                <span class="float-right">{{$item->id}}</span>
+                <span class="float-right bg-white p-1 pl-2 pr-2 text-xs text-gray-500 rounded-full">{{$item->id}}</span>
 
+                <img src='{{ asset("$item->photo")}}' class="w-28 h-28  border-2 border-white rounded-full  object-cover m-auto mt-6 mb-6">
+                <span class="font-bold text-2xl"> {{ $item->first_name }} {{ $item->first_last_name }}</span><br>
+                <span class="font-bold text-gray-700 ">DUI: {{ $item->dui }}</span>
+              
            </x-slot:header>
             <x-slot:detail>
 
-                <img src='{{ asset("$item->photo")}}' class="w-32 h-32 border-2 border-white float-left mr-5 object-cover">
+               
                 <span class="text-black font-bold"> {{ $item->first_name }}      {{ $item->second_name }}      {{ $item->thrid_name }}</span><br>
                 <span class="text-black font-bold"> {{ $item->first_last_name }} {{ $item->second_last_name }} {{ $item->thrid_last_name }} </span><br>
                 <span class="text-gray-700 text-xs"> Nacimiento: {{ $item->birthday}} </span><br>
                 <span class="text-gray-700 text-xs"> Periodo de: {{ $item->start}} </span> <br>
                 <span class="text-gray-700 text-xs" > hasta: {{ $item->end}} </span><br>
-                <span class="text-gray-700 font-bold">  @if($item->active==1)  Activo  @else Inactivo   @endif </span><br>
+                <span class="text-gray-700 font-bold">  
+                    @if($item->active==1)
+                       <span class="text-green-600"> Activo </span> 
+                    @else
+                    <span class="text-red-600"> Inactivo   </span> 
+                    @endif 
+                </span><br>
                 <span class="text-gray-700"> Comentarios: {{$item->comments}}</span>
 
             </x-slot:detail>
@@ -74,9 +88,10 @@
 
              </x-slot:options>   
 
-         </x-icj.item-folder>
+         </x-icj.item-card>
 
           @endforeach
+
     </div> <!-- fin lista -->
 
    
@@ -111,8 +126,16 @@
         <x-icj.input-txt label="Nacimiento" value="birthday" type="date" />
         <x-icj.input-txt label="Inicio" value="start" type="date" />
         <x-icj.input-txt label="Fin" value="end" type="date" />
+        <x-icj.input-txt label="Fin" value="end" type="date" />
 
-        <x-icj.input-txt label="Activo" value="active" />
+        <x-icj.input-txt label="Correo" value="email" type="email" />
+        <x-icj.input-txt label="Teléfono" value="phone" />
+
+        <x-icj.input-txt label="DUI" value="dui" />
+        <x-icj.input-txt label="carnet" value="nr" />
+       
+
+        <x-icj.input-txt label="Activo" value="active" type="checkbox" />
         <x-icj.input-txt label="Comentarios" value="comments" />
 
 

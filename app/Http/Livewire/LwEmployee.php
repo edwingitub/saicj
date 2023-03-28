@@ -27,6 +27,12 @@ public $thrid_last_name="";
 public $birthday="";
 public $start="";
 public $end="";
+
+public $phone="";
+public $email="";
+public $dui="";
+public $nr="";
+
 public $active="";
 public $comments="";
 
@@ -68,6 +74,12 @@ public function  create(){
    $obj->birthday=$this->birthday;
    $obj->start=$this->start;
    $obj->end=$this->end;
+
+   $obj->phone=$this->phone;
+   $obj->email=$this->email;
+   $obj->dui=$this->dui;
+   $obj->nr=$this->nr;
+
    $obj->active=$this->active;
    $obj->comments=$this->comments;
    $obj->save();
@@ -98,6 +110,11 @@ $this->end=$obj->end;
 $this->active=$obj->active;
 $this->comments=$obj->comments;
 
+$this->phone=$obj->phone;
+$this->email=$obj->email;
+$this->dui=$obj->dui;
+$this->nr=$obj->nr;
+
 $this->vtable='hidden';
 $this->vform="block";
 $this->vmode="update";
@@ -108,7 +125,9 @@ public function update(){
   $this->validate();
 
    $obj= Employee::find($this->my_id);
-   $obj->photo=$this->photo->store('photos');
+   if(!($this->photo== $obj->photo)){
+     $obj->photo=$this->photo->store('photos');
+   }
    $obj->first_name=$this->first_name;
    $obj->second_name=$this->second_name;
    $obj->thrid_name=$this->thrid_name;
@@ -118,6 +137,12 @@ public function update(){
    $obj->birthday=$this->birthday;
    $obj->start=$this->start;
    $obj->end=$this->end;
+
+   $obj->phone=$this->phone;
+   $obj->email=$this->email;
+   $obj->dui=$this->dui;
+   $obj->nr=$this->nr;
+
    $obj->active=$this->active;
    $obj->comments=$this->comments;
    $obj->save();
@@ -159,6 +184,10 @@ public function update(){
         'birthday',
         'start',
         'end',
+        'phone',
+        'email',
+        'dui',
+        'nr',
         'active',
         'comments',
         'vform',
@@ -176,7 +205,10 @@ public function update(){
     public function render()
     {
       
-       $list=Employee::where('first_name',"like","%".$this->search."%")->paginate(15);
+       $list=Employee::where('first_name',"like","%".$this->search."%")
+       
+                       ->orWhere('first_last_name',"like","%".$this->search."%")
+                       ->paginate(15);
         return view('livewire.lw-employee')
                ->with("list",$list);
     }

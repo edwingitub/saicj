@@ -23,6 +23,10 @@ return new class extends Migration
             $table->date('birthday');
             $table->date('start');
             $table->date('end');
+            $table->string('email',100);
+            $table->string('phone', 20);
+            $table->string('dui', 20);
+            $table->string('nr', 20);
             $table->boolean('active');
             $table->string('comments');
 
