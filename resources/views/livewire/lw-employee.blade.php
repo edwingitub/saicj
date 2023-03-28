@@ -48,21 +48,23 @@
 
         @foreach ($list as $item)
 
-        <x-icj.item-folder>
+        <x-icj.item-folder color="indigo">
             <x-slot:header>
-               <img src='{{ asset("/storage/app/$item->photo")}}' >
-                <i class="fa fa-key fa-fw"></i>  {{ $item->first_name }} {{ $item->first_last_name }}
+             
+                <span class="text-2xl"><i class="fa fa-user fa-fw"></i>  {{ $item->first_name }} {{ $item->first_last_name }}</span>
                 <span class="float-right">{{$item->id}}</span>
 
            </x-slot:header>
             <x-slot:detail>
-                <span class="text-black"> <i class="fa fa-user fa-fw"></i> {{ $item->first_name }}      {{ $item->second_name }}      {{ $item->thrid_name }}</span><br>
-                <span class="text-black"> <i class="fa fa-user fa-fw"></i> {{ $item->first_last_name }} {{ $item->second_last_name }} {{ $item->thrid_last_name }} </span><br>
-                <span class="text-orange-800"> <i class="fa fa-calendar fa-fw"></i>Nacimiento: {{ $item->birthday}} </span><br>
-                <span class="text-orange-800"> <i class="fa fa-calendar fa-fw"></i>Periodo de: {{ $item->start}} </span> 
-                <span class="text-orange-800"> <i class="fa fa-calendar fa-fw"></i>hasta: {{ $item->end}} </span><br>
-                <span class="text-orange-800"> <i class="fa fa-calendar fa-fw"></i>Activo:  @if($item->active==1)  Si  @else No  @endif </span><br>
-                <span class="text-orange-800"> Comentarios: {{$item->comments}}</span>
+
+                <img src='{{ asset("$item->photo")}}' class="w-32 h-32 border-2 border-white float-left mr-5 object-cover">
+                <span class="text-black font-bold"> {{ $item->first_name }}      {{ $item->second_name }}      {{ $item->thrid_name }}</span><br>
+                <span class="text-black font-bold"> {{ $item->first_last_name }} {{ $item->second_last_name }} {{ $item->thrid_last_name }} </span><br>
+                <span class="text-gray-700 text-xs"> Nacimiento: {{ $item->birthday}} </span><br>
+                <span class="text-gray-700 text-xs"> Periodo de: {{ $item->start}} </span> <br>
+                <span class="text-gray-700 text-xs" > hasta: {{ $item->end}} </span><br>
+                <span class="text-gray-700 font-bold">  @if($item->active==1)  Activo  @else Inactivo   @endif </span><br>
+                <span class="text-gray-700"> Comentarios: {{$item->comments}}</span>
 
             </x-slot:detail>
              <x-slot:options>
