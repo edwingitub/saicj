@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\LwUser;
 use App\Http\Livewire\LwOffice;
 use App\Http\Livewire\LwEmployee;
+use App\Http\Livewire\LwJob;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-   
+
 })->middleware(['auth', 'verified','cors'])->name('dashboard');
 
 
@@ -39,6 +40,7 @@ Route::middleware('auth', 'verified','cors')->group(function () {
     Route::get('/user', LwUser::class)->name('user');
     Route::get('/office', LwOffice::class)->name('office');
     Route::get('/employee', LwEmployee::class)->name('employee');
+    Route::get('/job', LwJob::class)->name('job');
 });
 
 Route::middleware('auth')->group(function () {
