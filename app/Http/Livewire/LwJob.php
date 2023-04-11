@@ -4,7 +4,10 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Job;
+use App\Models\Employee;
+use App\Models\Office;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 use Livewire\WithPagination;
 
 class LwJob extends Component
@@ -16,6 +19,7 @@ public $search="";
 
 //Variables de campos
 public $my_id=0;
+public $subaccount="";
 public $name="";
 public $employee_id=0;
 public $office_id=0;
@@ -26,8 +30,9 @@ public $vform='hidden';
 public $vmode='insert';
 
 //reglas
-protected $rules = [
 
+protected $rules = [
+  'name' => 'required',
 ];
 
 //mensajes
@@ -51,6 +56,7 @@ public function  create(){
   $this->validate();
 
    $obj= new Job();
+   $obj->subaccount=$this->subaccount;
    $obj->name=$this->name;
    $obj->employee_id=$this->employee_id;
    $obj->office_id=$this->office_id;
@@ -69,6 +75,7 @@ public function  create(){
 public function  edit($id){
 $obj=Job::find($id);
 $this->my_id=$obj->id;
+$this->subaccount;
 $this->name=$obj->name;
 $this->employee_id=$obj->employee_id;
 $this->office_id=$obj->office_id;
@@ -86,6 +93,7 @@ public function update(){
   $this->validate();
 
    $obj= Job::find($this->my_id);
+   $obj->subaccount=$this->subaccount;
    $obj->name=$this->name;
    $obj->employee_id=$this->employee_id;
    $obj->office_id=$this->office_id;
@@ -119,6 +127,7 @@ public function update(){
       $this->resetValidation();
       $this->reset([
         'my_id',
+        'subaccount',
         'name',
         'employee_id',
         'office_id',
@@ -138,8 +147,23 @@ public function update(){
     public function render()
     {
 
-       $list=Job::where('name',"like","%".$this->search."%")->paginate(15);
+       $list=Job::where('name',"like","%".$this->search."%")
+                 ->orWhereRelation('employee', 'first_name',"like","%".$this->search."%")
+                 ->orWhereRelation('employee', 'first_last_name',"like","%".$this->search."%")
+                 ->orWhereRelation('office', 'name',"like","%".$this->search."%")
+                  ->paginate(15);
+
+       $cat_employees=Employee::select(['id',DB::raw("CONCAT(first_last_name,' ',
+                                                             second_last_name,' , ',
+                                                             first_name,' ',
+                                                             second_name) AS name")])->orderBy('name','asc')->get();   
+       $cat_offices=Office::orderBy('name','asc')->get();                                                      
+                                                             
+                                                             
+            
         return view('livewire.lw-job')
-               ->with("list",$list);
+               ->with("list",$list)
+               ->with("cat_employees",$cat_employees)
+               ->with("cat_offices",$cat_offices);
     }
 }

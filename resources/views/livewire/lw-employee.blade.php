@@ -25,6 +25,7 @@
             
             </div>
     </div>
+    
     <div class="bg-indigo-300 pl-3 pr-10 text-sm fixed bottom-0 w-full"> {{ $list->links() }}</div>
 
 
@@ -58,7 +59,10 @@
             <x-slot:header>
                 <span class="float-right bg-white p-1 pl-2 pr-2 text-xs text-gray-500 rounded-full">{{$item->id}}</span>
 
-                <img src='{{ asset("$item->photo")}}' class="w-28 h-28  border-2 border-white rounded-full  object-cover m-auto mt-6 mb-6">
+                <img src='{{ asset("$item->photo")}}'
+                     onerror="this.src='{{asset('img/user.png')}}';"
+                     class="w-28 h-28  border-2 border-white rounded-full  object-cover m-auto mt-6 mb-6"
+                 >
                 <span class="font-bold text-2xl"> {{ $item->first_name }} {{ $item->first_last_name }}</span><br>
                 <span class="font-bold text-gray-700 ">DUI: {{ $item->dui }}</span>
               

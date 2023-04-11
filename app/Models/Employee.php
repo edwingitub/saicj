@@ -23,4 +23,5 @@ class Employee extends Model
         'active',
         'comments',
     ];
+
 }

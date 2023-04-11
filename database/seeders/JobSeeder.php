@@ -17,21 +17,24 @@ class JobSeeder extends Seeder
             'id' => '1',
             'name' => 'Vacante',
             'employee_id'=>'1',
-            'office_id'=>'1'
+            'office_id'=>'1',
+            'subaccount'=>'1'
         ]);
 
         DB::table('jobs')->insert([
             'id' => '2',
             'name' => 'Vacante',
             'employee_id'=>'2',
-            'office_id'=>'2'
+            'office_id'=>'2',
+            'subaccount'=>'1'
         ]);
 
         DB::table('jobs')->insert([
             'id' => '3',
             'name' => 'Vacante',
             'employee_id'=>'3',
-            'office_id'=>'3'
+            'office_id'=>'3',
+            'subaccount'=>'1'
         ]);
     }
 }
