@@ -6,6 +6,7 @@ use App\Http\Livewire\LwUser;
 use App\Http\Livewire\LwOffice;
 use App\Http\Livewire\LwEmployee;
 use App\Http\Livewire\LwJob;
+use App\Http\Livewire\LwJobType;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,7 @@ Route::middleware('auth', 'verified','cors')->group(function () {
     Route::get('/office', LwOffice::class)->name('office');
     Route::get('/employee', LwEmployee::class)->name('employee');
     Route::get('/job', LwJob::class)->name('job');
+    Route::get('/jobType', LwJobType::class)->name('jobType');
 });
 
 Route::middleware('auth')->group(function () {

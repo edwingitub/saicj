@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('job_types', function (Blueprint $table) {
-            $table->comment("Puestos Nominales");
+
             $table->id();
-            $table->string('name')->default("Pendiente")->comment("Nombre");
-            $table->string('account')->default("0")->comment("Cuenta");
-            $table->integer('amount')->default("0")->comment("Cantidad");
+            $table->string('name')->default("Pendiente");
+            $table->string('account')->default("0");
+            $table->integer('amount')->default(0);
 
             $table->timestamps();
         });
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('job_types_');
+        Schema::dropIfExists('job_types');
     }
 };

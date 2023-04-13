@@ -14,6 +14,13 @@
 
     <div class="ml-2 flex flex-wrap  gap-10">
 
+        <a href="{{ url('jobType') }}" >
+            <div class=" overflow-hidden w-60 flex flex-col justify-center text-center hover:scale-110">
+                <i class="fas fas fa-th-list fa-fw text-6xl m-auto text-orange-500 "></i>
+                <span class="text-1xl">Puestos Nominales</span>
+            </div>
+        </a>
+
         <a href="{{ url('job') }}" >
             <div class=" overflow-hidden w-60 flex flex-col justify-center text-center hover:scale-110">
                 <i class="fas fas fa-th-list fa-fw text-6xl m-auto text-orange-500 "></i>
