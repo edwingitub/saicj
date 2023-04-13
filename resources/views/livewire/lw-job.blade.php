@@ -4,7 +4,16 @@
         <span><a href="{{url("dashboard")}}">Inicio</a> / <a href="{{url('menu_administracion')}}">Administración</a> / Puestos Funcionales</span>
         <span class="float-right pr-14">SAICJ V.1</span><br>
 
-        <i class="fa fa-search fa-fw absolute pt-3 "></i><input id="search" name="search" wire:model="search" placeholder="Buscar" class="pl-6 bg-transparent border-0 focus:outline-none w-full p-2" ><br>
+        <i class="fa fa-search fa-fw absolute pt-3 "></i>
+        <input id="search" name="search" wire:model="search" placeholder="Empleado" class="pl-6 bg-transparent border-0 focus:outline-none  p-2" >
+        
+        <i class="fa fa-search fa-fw  pt-3 "></i>
+        <input id="search" name="search_count" wire:model="search_account" placeholder="Cuenta" class="pl-6 bg-transparent border-0 focus:outline-none  p-2" >
+
+        <i class="fa fa-search fa-fw  pt-3 "></i>
+        <input id="search" name="search_count" wire:model="search_subaccount" placeholder=" Sub Cuenta" class="pl-6 bg-transparent border-0 focus:outline-none  p-2" >
+
+        <br>
         
  
 
@@ -47,13 +56,15 @@
 
 
     <!-- tabla -->
-    <div class="p-10  {{$vtable}}" >
+    <div class="p-12  {{$vtable}}" >
     <table class="table-auto w-full text-sm text-center shadow-lg ">
         <thead class="border-b-4  text-gray-700 bg-indigo-300">
             <tr>
                 <th>Foto</th>
+                <th>Cuenta</th>
                 <th>Sub Cuenta</th>
-                <th>Puesto</th>
+                <th>Funcional</th>
+                <th>Nominal</th>
                 <th>Empleado</th>
                 <th>Unidad Organizativa</th>
                 <th>Opciónes</th>
@@ -69,8 +80,10 @@
                      onerror="this.src='{{asset('img/user.png')}}';"
                      class="w-14 h-14  border-2 border-white rounded-full  object-cover m-auto mt-2 mb-2">
             </td>
+            <td>{{$item->jobType->account}}</td>
             <td>{{$item->subaccount}}</td>
             <td>{{$item->name}}</td>
+            <td>{{$item->jobType->name}}</td>
             <td>{{$item->employee->first_name}} {{$item->employee->first_last_name}}</td>
             <td>{{$item->office->name}}</td>
             <td>
@@ -102,6 +115,7 @@
     <span class="ml-3">{{$my_id}}</span>
     <x-icj.input-txt label="Sub Cuenta" value="subaccount" />
     <x-icj.input-txt label="Nombre" value="name" />
+    <x-icj.input-select label="Nominal"   value="job_type_id"   :cat="$cat_job_types" option_value="id" option_label="name"/>
     <x-icj.input-select label="Empleado" value="employee_id" :cat="$cat_employees" option_value="id" option_label="name"/>
     <x-icj.input-select label="Unidad"   value="office_id"   :cat="$cat_offices" option_value="id" option_label="name"/>
    

@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             OfficeSeeder::class,
             EmployeeSeeder::class,
+            JobTypeSeeder::class,
             JobSeeder::class,
 
         ]);

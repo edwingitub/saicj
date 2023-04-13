@@ -20,5 +20,11 @@ class Job extends Model
         return $this->hasOne(Employee::class,'id','employee_id');
     }
 
+    public function jobType(): HasOne
+    {
+        return $this->hasOne(JobType::class,'id','job_type_id');
+    }
+
+
 }
 

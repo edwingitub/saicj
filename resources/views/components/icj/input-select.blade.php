@@ -2,6 +2,7 @@
 <div class="m-3 flex flex-col">
   <span class="font-bold">{{$label}}</span>
   <select id="{{$value}}" name="{{$value}}"   wire:model="{{$value}}" placeholder="Correo" class="bg-indigo 100    p-2 bg-indigo-100">
+    <option value="">Seleccione un valor</option>
     @foreach($cat as $item)
     <option value="{{$item->$option_value}}">{{$item->$option_label}}</option>
     @endforeach  
