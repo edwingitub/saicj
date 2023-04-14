@@ -11,14 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('job_types', function (Blueprint $table) {
-
+        Schema::create('license_types', function (Blueprint $table) {
             $table->id();
-            $table->string('account')->default("0");
-            $table->string('name')->default("Pendiente");
-            $table->decimal('salary',8,2)->default("0.00");
-            $table->integer('amount')->default(0);
-
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -28,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('job_types');
+        Schema::dropIfExists('license_types');
     }
 };

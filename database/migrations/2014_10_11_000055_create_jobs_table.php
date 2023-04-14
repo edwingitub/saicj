@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('employee_id')->index()->default(1);
             $table->unsignedBigInteger('office_id')->index()->default(1);
             $table->string('subaccount')->default("1");
+            $table->boolean('boss');
             $table->timestamps();
 
             $table->foreign('employee_id')->references('id')->on('employees');

@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             EmployeeSeeder::class,
             JobTypeSeeder::class,
             JobSeeder::class,
+            LicenseTypeSeeder::class,
 
         ]);
     }

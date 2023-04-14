@@ -22,6 +22,7 @@ public $search_subaccount="";
 public $my_id=0;
 public $account="";
 public $name="";
+public $salary="";
 public $amount=0;
 
 //Variables de vista
@@ -35,6 +36,7 @@ protected $rules = [
   'account' => 'required',
   'name' => 'required',
   'amount' => 'required',
+  'salary' => 'required',
 
 ];
 
@@ -62,8 +64,23 @@ public function  create(){
    $obj= new JobType();
    $obj->account=$this->account;
    $obj->name=$this->name;
+   $obj->salary=$this->salary;
    $obj->amount=$this->amount;
    $obj->save();
+
+
+
+   for($i=0;$i<$obj->amount;$i++){
+    $job= new Job();
+    $job->subaccount=$i+1;
+    $job->name="Pendiente";
+    $job->job_type_id=$obj->id;
+    $job->employee_id=1;
+    $job->office_id=1;
+    $job->boss=0;
+    $job->save();
+
+   }
 
    $this->vtable='block';
    $this->vform="hidden";
@@ -80,6 +97,7 @@ $obj=JobType::find($id);
 $this->my_id=$obj->id;
 $this->account=$obj->account;
 $this->name=$obj->name;
+$this->salary=$obj->salary;
 $this->amount=$obj->amount;
 
 
@@ -99,6 +117,7 @@ public function update(){
    $obj->account=$this->account;
    $obj->name=$this->name;
    $obj->amount=$this->amount;
+   $obj->salary=$this->salary;
    $obj->save();
 
 
@@ -112,9 +131,14 @@ public function update(){
 
 //borrar
     public function delete(JobType $obj){
-      $obj->delete();
-      session()->flash('message', 'Registro eliminado');
-
+      $jobs=Job::where('job_type_id',$obj->id)->count();
+      if($jobs==0){
+        $obj->delete();
+        session()->flash('message', 'Registro eliminado');
+      }
+      else {
+        session()->flash('message', 'No se puede borrar se usa en puestos funcionales');
+      }
     }
 
     public function cancel()
@@ -131,6 +155,7 @@ public function update(){
         'account',
         'name',
         'amount',
+        'salary',
         'vtable',
         'vform',
         'vmode'

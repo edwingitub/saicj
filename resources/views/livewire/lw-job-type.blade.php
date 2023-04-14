@@ -52,7 +52,13 @@
     </a>
 
 
-     <div class="flex float-left m-4 ml-12   bg-green-700 text-green-200">
+
+
+    <!-- tabla -->
+    <div class="p-12  {{$vtable}}" >
+
+        
+     <div class="flex float-left mr-4 mb-4    bg-green-700 text-green-200">
         <div class="text-center bg-green-900 p-3 text-4xl">
         <i class="fa fa-users fa-fw"></i>
         </div>
@@ -62,7 +68,7 @@
       </div>
      </div>
 
-     <div class="flex float-left m-4   bg-gray-700 text-gray-200">
+     <div class="flex float-left mr-4 mb-4  bg-gray-700 text-gray-200">
         <div class="text-center bg-gray-900 p-3 text-4xl">
         <i class="fa fa-user fa-fw"></i>
         </div>
@@ -72,15 +78,13 @@
       </div>
      </div>
 
-
-    <!-- tabla -->
-    <div class="p-12  {{$vtable}}" >
     <table class="table-auto w-full text-sm text-center shadow-lg ">
         <thead class="border-b-4  text-gray-700 bg-indigo-300">
             <tr>
 
                 <th>Cuenta</th>
                 <th>Nominal</th>
+                <th>Salario</th>
                 <th>cantidad</th>
                 <th>Opciónes</th>
             </tr>
@@ -89,10 +93,15 @@
         <tbody>
 
             @foreach ($list as $item )
-            <tr class="border-b bg-white hover:bg-gray-100">
+            @php 
+            $color=( $this->usedJobs($item->id) != $item->amount )? "red-600":"black";
+            @endphp
+
+            <tr class="border-b bg-white hover:bg-gray-100 text-{{$color}}">
 
             <td>{{$item->account}}</td>
             <td>{{$item->name}}</td>
+            <td>${{number_format($item->salary,2,'.',',')}}</td>
             <td>{{$this->usedJobs($item->id)}} / {{$item->amount}}</td>
             <td>
             <x-icj.button-icon-update :my_id="$item->id" />
@@ -123,6 +132,7 @@
     <span class="ml-3">{{$my_id}}</span>
     <x-icj.input-txt label="Sub Cuenta" value="account" />
     <x-icj.input-txt label="Nombre" value="name" />
+    <x-icj.input-txt label="Salario" value="salary" />
      <x-icj.input-txt label="Cantidad" value="amount" />
 
 

@@ -28,6 +28,7 @@ public $name="";
 public $job_type_id=0;
 public $employee_id=0;
 public $office_id=0;
+public $boss=0;
 
 //Variables de vista
 public $vtable='block';
@@ -72,6 +73,7 @@ public function  create(){
    $obj->job_type_id=$this->job_type_id;
    $obj->employee_id=$this->employee_id;
    $obj->office_id=$this->office_id;
+   $obj->boss=$this->boss;
    $obj->save();
 
    $this->vtable='block';
@@ -92,6 +94,7 @@ $this->name=$obj->name;
 $this->job_type_id=$obj->job_type_id;
 $this->employee_id=$obj->employee_id;
 $this->office_id=$obj->office_id;
+$this->boss=$obj->boss;
 
 
 $this->vtable='hidden';
@@ -111,6 +114,7 @@ public function update(){
    $obj->job_type_id=$this->job_type_id;
    $obj->employee_id=$this->employee_id;
    $obj->office_id=$this->office_id;
+   $obj->boss=$this->boss;
 
    $obj->save();
 
@@ -146,6 +150,7 @@ public function update(){
         'job_type_id',
         'employee_id',
         'office_id',
+        'boss',
         'vtable',
         'vform',
         'vmode'

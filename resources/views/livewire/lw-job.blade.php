@@ -66,6 +66,8 @@
                 <th>Funcional</th>
                 <th>Nominal</th>
                 <th>Empleado</th>
+                <th>Jefe</th>
+                <th>Salario</th>
                 <th>Unidad Organizativa</th>
                 <th>Opciónes</th>
             </tr>
@@ -85,6 +87,8 @@
             <td>{{$item->name}}</td>
             <td>{{$item->jobType->name}}</td>
             <td>{{$item->employee->first_name}} {{$item->employee->first_last_name}}</td>
+            <td>{{($item->boss==1)?"Si":"No"}}</td>
+            <td>${{number_format($item->jobType->salary,2,'.',',')}}</td>
             <td>{{$item->office->name}}</td>
             <td>
             <x-icj.button-icon-update :my_id="$item->id" />
@@ -103,9 +107,9 @@
      
     <div class="bg-indigo-300 font-bold p-2 text-center"> 
         @if($vmode=="insert")
-        Nuevo Usuario
+        Nuevo
         @else
-        Modificar Usuario
+        Modificar
         @endif
     </div>
          
@@ -118,6 +122,7 @@
     <x-icj.input-select label="Nominal"   value="job_type_id"   :cat="$cat_job_types" option_value="id" option_label="name"/>
     <x-icj.input-select label="Empleado" value="employee_id" :cat="$cat_employees" option_value="id" option_label="name"/>
     <x-icj.input-select label="Unidad"   value="office_id"   :cat="$cat_offices" option_value="id" option_label="name"/>
+    <x-icj.input-txt label="Es Jefe" value="boss" type="checkbox" />
    
     
     <div class="flex flex-wrap gap-2 justify-center">
