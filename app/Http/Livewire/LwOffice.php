@@ -2,10 +2,10 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
 use App\Models\Office;
-use Illuminate\Support\Facades\Hash;
+use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Hash;
 
 class LwOffice extends Component
 {
@@ -24,7 +24,7 @@ public $vmode='insert';
 
 
 protected $rules = [
-
+  'name' => 'required|min:6',
 ];
 
 protected $messages = [
@@ -124,8 +124,9 @@ public function update(){
 
     public function render()
     {
+    
       
-       $list=Office::where('name',"like","%".$this->search."%")->paginate(15);
+       $list=Office::where('name',"like","%".$this->search."%")->orderBy('code','asc')->paginate(15);
         return view('livewire.lw-office')
                ->with("list",$list);
     }

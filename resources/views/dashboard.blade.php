@@ -29,7 +29,7 @@
             </div>   
         </a>
 
-        <a href="{{ url('menu_sistema') }}" >
+        <a href="{{ url('menu_rrhh') }}" >
             <div class=" overflow-hidden w-60 flex flex-col justify-center text-center">
                 <i class="fas fa-cube fa-fw text-6xl m-auto text-orange-500 "></i>
                 <span class="text-1xl"> Recursos Humanos</span>

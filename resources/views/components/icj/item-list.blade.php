@@ -3,7 +3,7 @@
 
     <div class="flex gap-0">
         <!-- tema -->
-        <div class=" w-40 font-bold text-center text-orange-900 p-2   bg-orange-300">
+        <div class=" w-40 font-bold text-left text-orange-900 p-2 pl-10   bg-orange-300">
           {{$header}}
         </div>
 

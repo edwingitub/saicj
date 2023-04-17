@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\LwJob;
 use App\Http\Livewire\LwUser;
 use App\Http\Livewire\LwOffice;
-use App\Http\Livewire\LwEmployee;
-use App\Http\Livewire\LwJob;
 use App\Http\Livewire\LwJobType;
+use App\Http\Livewire\LwLicense;
+use App\Http\Livewire\LwEmployee;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,12 +38,14 @@ Route::middleware('auth', 'verified','cors')->group(function () {
 
     Route::get('/menu_sistema', function () {return view('menu_sistema'); })->name('menu_sistema');
     Route::get('/menu_administracion', function () {return view('menu_administracion'); })->name('menu_administracion');
+    Route::get('/menu_rrhh', function () {return view('menu_rrhh'); })->name('menu_rrhh');
 
     Route::get('/user', LwUser::class)->name('user');
     Route::get('/office', LwOffice::class)->name('office');
     Route::get('/employee', LwEmployee::class)->name('employee');
     Route::get('/job', LwJob::class)->name('job');
     Route::get('/jobType', LwJobType::class)->name('jobType');
+    Route::get('/License', LwLicense::class)->name('License');
 });
 
 Route::middleware('auth')->group(function () {
