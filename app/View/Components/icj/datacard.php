@@ -3,6 +3,7 @@
 namespace App\View\Components\icj;
 
 use Closure;
+use App\Models\Job;
 use App\Models\Employee;
 use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
@@ -24,7 +25,8 @@ class datacard extends Component
      */
     public function render(): View|Closure|string
     {
-        $data=Employee::where('id',$this->id)->get();
-        return view('components.icj.datacard')->with("id",$this->id)->with("data",$data[0]);
+        $data=Job::whereRelation('employee', 'dui',"like",$this->id)->get();
+
+        return view('components.icj.datacard')->with("data",$data[0]);
     }
 }
