@@ -24,6 +24,11 @@ Route::get('/', function () {
     return view('auth/login');
 });
 
+//carnet público
+Route::get('/card/{id}', function (string $id) {
+    return view('card')->with("id",$id);;
+})->name('card');
+
 
 
 Route::get('/dashboard', function () {
@@ -45,7 +50,7 @@ Route::middleware('auth', 'verified','cors')->group(function () {
     Route::get('/employee', LwEmployee::class)->name('employee');
     Route::get('/job', LwJob::class)->name('job');
     Route::get('/jobType', LwJobType::class)->name('jobType');
-    Route::get('/License', LwLicense::class)->name('License');
+    Route::get('/license', LwLicense::class)->name('license');
 });
 
 Route::middleware('auth')->group(function () {
