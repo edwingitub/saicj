@@ -35,7 +35,7 @@ class EmployeeSeeder extends Seeder
 
          $obj= new Employee();
          $obj->id=2;
-         $obj->photo="xxxx";
+         $obj->photo="photos/SqsbwfBPC99XwKuAzTAIiDTX3wdS9FeQf3cw2ssE.jpg";
          $obj->first_name="Marvin";
          $obj->second_name="Alberto";
          $obj->thrid_name="";

@@ -27,7 +27,12 @@ Route::get('/', function () {
 //carnet público
 Route::get('/card/{id}', function (string $id) {
     return view('card')->with("id",$id);;
-})->name('card');
+})->middleware(['cors'])->name('card');
+
+//qr público
+Route::get('/qr/{id}', function (string $id) {
+    return view('qr')->with("id",$id);;
+})->middleware(['cors'])->name('qr');
 
 
 
