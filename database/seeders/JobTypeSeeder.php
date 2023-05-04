@@ -17,7 +17,7 @@ class JobTypeSeeder extends Seeder
         DB::table('job_types')->insert([
             'id' => '1',
             'name' => 'Jefatura I',
-            'salary'=>2000.00,
+            'salary'=>0.00,
             'account'=>'1',
             'amount'=>'1',
         ]);
@@ -25,7 +25,7 @@ class JobTypeSeeder extends Seeder
         DB::table('job_types')->insert([
             'id' => '2',
             'name' => 'Coordinador I',
-            'salary'=>1500.00,
+            'salary'=>0.00,
             'account'=>'2',
             'amount'=>'1',
         ]);
@@ -33,7 +33,7 @@ class JobTypeSeeder extends Seeder
         DB::table('job_types')->insert([
             'id' => '3',
             'name' => 'Técnico I',
-            'salary'=>1000.00,
+            'salary'=>0.00,
             'account'=>'3',
             'amount'=>'1',
         ]);

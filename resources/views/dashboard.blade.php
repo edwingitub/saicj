@@ -3,7 +3,7 @@
         <span>Inicio</span>
         <span class="float-right pr-14">SAICJ V.1</span><br>
 
-        
+
 
     </div>
 
@@ -19,67 +19,58 @@
             <div class=" overflow-hidden w-60 flex flex-col justify-center text-center  hover:opacity-80 hover:scale-105">
                 <i class="fas fa-cube fa-fw text-6xl m-auto text-orange-500 "></i>
                 <span class="text-1xl">Sistema</span>
-            </div>  
+            </div>
         </a>
 
         <a href="{{ url('menu_administracion') }}" >
             <div class=" overflow-hidden w-60 flex flex-col justify-center text-center  hover:opacity-80 hover:scale-105">
                 <i class="fas fa-cube fa-fw text-6xl m-auto text-orange-500 "></i>
                 <span class="text-1xl">  Administración</span>
-            </div>   
+            </div>
         </a>
 
         <a href="{{ url('menu_rrhh') }}" >
             <div class=" overflow-hidden w-60 flex flex-col justify-center text-center  hover:opacity-80 hover:scale-105">
                 <i class="fas fa-cube fa-fw text-6xl m-auto text-orange-500 "></i>
                 <span class="text-1xl"> Recursos Humanos</span>
-            </div>   
+            </div>
         </a>
-        
+
         <a href="{{ url('menu_sistema') }}" >
             <div class=" overflow-hidden w-60 flex flex-col justify-center text-center  hover:opacity-80 hover:scale-105">
                 <i class="fas fa-cube fa-fw text-6xl m-auto text-orange-500 "></i>
                 <span class="text-1xl"> Activo Fijo</span>
-            </div>   
+            </div>
         </a>
 
         <a href="{{ url('menu_sistema') }}" >
             <div class=" overflow-hidden w-60 flex flex-col justify-center text-center  hover:opacity-80 hover:scale-105">
                 <i class="fas fa-cube fa-fw text-6xl m-auto text-orange-500 "></i>
                 <span class="text-1xl">  Vehículos</span>
-            </div>   
+            </div>
         </a>
 
         <a href="{{ url('menu_sistema') }}" >
             <div class=" overflow-hidden w-60 flex flex-col justify-center text-center  hover:opacity-80 hover:scale-105">
                 <i class="fas fa-cube fa-fw text-6xl m-auto text-orange-500 "></i>
                 <span class="text-1xl">   Equipo Informática</span>
-            </div>   
+            </div>
         </a>
 
         <a href="{{ url('menu_sistema') }}" >
             <div class=" overflow-hidden w-60 flex flex-col justify-center text-center  hover:opacity-80 hover:scale-105">
                 <i class="fas fa-cube fa-fw text-6xl m-auto text-orange-500 "></i>
                 <span class="text-1xl">   Servicios</span>
-            </div>   
+            </div>
         </a>
 
-        
+
         <a href="{{ url('menu_sistema') }}" >
             <div class=" overflow-hidden w-60 flex flex-col justify-center text-center  hover:opacity-80 hover:scale-105">
                 <i class="fas fa-cube fa-fw text-6xl m-auto text-orange-500 "></i>
                 <span class="text-1xl">    Planificación</span>
-            </div>   
+            </div>
         </a>
-
-        
-
-       
-
-       
-
-       
-
 
 
     </div>
