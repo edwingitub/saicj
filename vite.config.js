@@ -2,9 +2,7 @@ import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 
 export default defineConfig({
-    server: {
-        host: '192.168.0.106',  // Add this to force IPv4 only
-    },
+
     plugins: [
         laravel({
             input: [
