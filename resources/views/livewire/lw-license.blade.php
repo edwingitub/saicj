@@ -26,6 +26,7 @@
             <tr>
                 <th>Foto</th>
                 <th>Solicitante</th>
+                <th>Unidad Organizativa</th>
                 <th>Jefe</th>
                 <th>Tipo</th>
                 <th>Inicio</th>
@@ -44,6 +45,7 @@
                 class="w-14 h-14  border-2 border-white rounded-full  object-cover m-auto mt-2 mb-2">
             </td>
             <td>{{$item->first_name}} {{$item->second_name}} {{$item->first_last_name}} {{$item->second_last_name}}</td>
+            <td>{{$item->office}}</td>
             <td>{{$item->boss_first_name}} {{$item->boss_second_name}} {{$item->boss_first_last_name}} {{$item->boss_second_last_name}}</td>
             <td>{{$item->license_type->name}}</td>
             <td>{{$item->start}}</td>
