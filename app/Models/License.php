@@ -19,4 +19,9 @@ class License extends Model
     {
         return $this->hasOne(LicenseType::class,'id','license_type_id');
     }
+
+    public function license_state(): HasOne
+    {
+        return $this->hasOne(LicenseState::class,'id','license_state_id');
+    }
 }

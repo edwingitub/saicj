@@ -32,7 +32,7 @@
         <a href="{{ url('menu_rrhh') }}" >
             <div class=" overflow-hidden w-60 flex flex-col justify-center text-center  hover:opacity-80 hover:scale-105">
                 <i class="fas fa-cube fa-fw text-6xl m-auto text-orange-500 "></i>
-                <span class="text-1xl"> Recursos Humanos</span>
+                <span class="text-1xl"> Talento Humano</span>
             </div>
         </a>
 

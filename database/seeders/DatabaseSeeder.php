@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             JobTypeSeeder::class,
             JobSeeder::class,
             LicenseTypeSeeder::class,
+            LicenseStatesSeeder::class,
             LicenseSeeder::class,
 
         ]);

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('employee_id')->index()->default(1);
             $table->unsignedBigInteger('license_type_id')->index()->default(1);
+            $table->unsignedBigInteger('license_state_id')->index()->default(1);
 
             $table->string('first_name',50);
             $table->string('second_name',50);
@@ -40,6 +41,7 @@ return new class extends Migration
 
             $table->foreign('employee_id')->references('id')->on('employees');
             $table->foreign('license_type_id')->references('id')->on('license_types');
+            $table->foreign('license_state_id')->references('id')->on('license_states');
         });
     }
 
