@@ -44,9 +44,11 @@ Route::get('/dashboard', function () {
 
 
 
+
+
 Route::middleware('auth', 'verified','cors')->group(function () {
 
-    Route::get('/menu_sistema', function () {return view('menu_sistema'); })->name('menu_sistema');
+    Route::get('/menu_sistema', function () {return view('menu_sistema'); })->middleware('auth.role:1')->name('menu_sistema');
     Route::get('/menu_administracion', function () {return view('menu_administracion'); })->name('menu_administracion');
     Route::get('/menu_rrhh', function () {return view('menu_rrhh'); })->name('menu_rrhh');
 

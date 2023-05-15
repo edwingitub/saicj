@@ -14,13 +14,14 @@
 
     <div class="ml-12 flex flex-wrap  gap-10 w-1/2">
 
-
+       @if(in_array(Auth::user()->role->id, array(1)))
         <a href="{{ url('menu_sistema') }}" >
             <div class=" overflow-hidden w-60 flex flex-col justify-center text-center  hover:opacity-80 hover:scale-105">
                 <i class="fas fa-cube fa-fw text-6xl m-auto text-orange-500 "></i>
                 <span class="text-1xl">Sistema</span>
             </div>
         </a>
+        @endif
 
         <a href="{{ url('menu_administracion') }}" >
             <div class=" overflow-hidden w-60 flex flex-col justify-center text-center  hover:opacity-80 hover:scale-105">

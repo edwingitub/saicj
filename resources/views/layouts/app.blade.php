@@ -80,7 +80,11 @@
                     class="block py-1 md:py-3 pl-1 align-middle text-gray-200 no-underline hover:text-indigo-100">
                     <img class="w-6 h-6 rounded-full inline-block mr-2" src="http://i.pravatar.cc/300"
                         alt="Avatar of User">
-                    <span class="w-full inline-block pb-1 md:pb-0 text-sm text-white">{{ Auth::user()->name }} </span>
+
+                    <span class="w-full inline-block pb-1 md:pb-0 text-xs text-white">{{ Auth::user()->name }} <br>
+                        {{ Auth::user()->role->name }}
+                     </span>
+
                 </a>
             </li>
 
@@ -91,6 +95,9 @@
                         class="w-full inline-block pb-1 md:pb-0 text-sm">Inicio</span>
                 </a>
             </li>
+
+
+            @if(in_array(Auth::user()->role->id, array(1)))
             <li class="my-2 md:my-0 ">
                 <a href="{{ url('menu_sistema') }}"
                     class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-indigo-100">
@@ -98,6 +105,8 @@
                         class="w-full inline-block pb-1 md:pb-0 text-sm">Sistema</span>
                 </a>
             </li>
+            @endif
+
             <li class="my-2 md:my-0">
                 <a href="{{ url('menu_administracion') }}"
                     class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-indigo-100 ">
