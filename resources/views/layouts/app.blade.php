@@ -78,12 +78,17 @@
             <li class="my-2 md:my-0">
                 <a href="#"
                     class="block py-1 md:py-3 pl-1 align-middle text-gray-200 no-underline hover:text-indigo-100">
-                    <img class="w-6 h-6 rounded-full inline-block mr-2" src="http://i.pravatar.cc/300"
+                    <img class="w-6 h-6 rounded-full inline-block mr-2 object-cover" src="{{asset(Auth::user()->employee->photo)}}"
+                    onerror="this.src='{{asset('img/user.png')}}';"
                         alt="Avatar of User">
 
-                    <span class="w-full inline-block pb-1 md:pb-0 text-xs text-white">{{ Auth::user()->name }} <br>
-                        {{ Auth::user()->role->name }}
+                    <span class="w-full inline-block pb-1 md:pb-0 text-xs text-white">
+                        {{ Auth::user()->employee->first_name }}  {{ Auth::user()->employee->first_last_name }}<br>
+                       <b> {{ Auth::user()->role->name }}</b>
                      </span>
+
+
+
 
                 </a>
             </li>

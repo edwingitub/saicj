@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\LivewireAuthorize;
 
 use Livewire\Component;
-use App\Models\Employee;
+use App\Models\License;
+
 use Illuminate\Support\Facades\Hash;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 
 
-class LwEmployee extends Component
+class LwLicenseAuthorize extends Component
 {
   use WithPagination;
   use WithFileUploads;
@@ -63,7 +64,7 @@ public function  create(){
 
   $this->validate();
 
-   $obj= new Employee();
+   $obj= new License();
    $obj->photo=$this->photo->store('photos');
    $obj->first_name=$this->first_name;
    $obj->second_name=$this->second_name;
@@ -95,7 +96,7 @@ public function  create(){
 
 
 public function  edit($id){
-$obj=Employee::find($id);
+$obj=License::find($id);
 $this->my_id=$obj->id;
 $this->photo=$obj->photo;
 $this->first_name=$obj->first_name;
@@ -124,7 +125,7 @@ public function update(){
 
   $this->validate();
 
-   $obj= Employee::find($this->my_id);
+   $obj= License::find($this->my_id);
    if(!($this->photo== $obj->photo)){
      $obj->photo=$this->photo->store('photos');
    }
@@ -157,8 +158,8 @@ public function update(){
 
 
 
-    public function delete(Employee $employee){
-      $employee->delete();
+    public function delete(License $license){
+      $license->delete();
       session()->flash('message', 'Registro eliminado');
 
     }
@@ -205,12 +206,8 @@ public function update(){
     public function render()
     {
 
-       $list=Employee::where('first_name',"like","%".$this->search."%")
-
-                       ->orWhere('first_last_name',"like","%".$this->search."%")
-                       ->paginate(15);
-        return view('livewire.lw-employee')
+       $list=License::where('first_name',"like","%".$this->search."%")->get();
+        return view('livewire.lw-license-auth   orize')
                ->with("list",$list);
     }
 }
-

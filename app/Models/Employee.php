@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Employee extends Model
 {
     //use HasFactory;
-    
+
     protected $fillable = [
         'photo',
         'first_name',
@@ -23,5 +24,10 @@ class Employee extends Model
         'active',
         'comments',
     ];
+
+    public function jobs(): HasMany
+    {
+        return $this->hasMany(Job::class);
+    }
 
 }

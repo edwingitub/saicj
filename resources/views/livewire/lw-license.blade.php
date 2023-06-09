@@ -75,7 +75,7 @@
     </div>
 
     <div class="bg-orange-400  text-xs text-orange-800 block float-left p-2 mr-2  mt-10 font-bold text-gray-900 rounded-tl-lg rounded-tr-lg">
-        Mis autorizaciónes
+       Mis autorizaciónes
 
     </div>
 
@@ -121,8 +121,11 @@
             <td>{{$item->end}}</td>
             <td><span class="bg-gray-100 p-2 rounded-lg">{{$item->license_state->name}}</span></td>
             <td>
+
+            <x-icj.button-icon-send :my_id="$item->id" />
             <x-icj.button-icon-update :my_id="$item->id" />
             <x-icj.button-icon-delete :my_id="$item->id" />
+
             </tr>
 
             </tr>

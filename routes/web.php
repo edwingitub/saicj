@@ -7,6 +7,7 @@ use App\Http\Livewire\LwJobType;
 use App\Http\Livewire\LwLicense;
 use App\Http\Livewire\LwEmployee;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\LwLicenseAuthorize;
 use App\Http\Controllers\ProfileController;
 
 /*
@@ -58,6 +59,7 @@ Route::middleware('auth', 'verified','cors')->group(function () {
     Route::get('/job', LwJob::class)->name('job');
     Route::get('/jobType', LwJobType::class)->name('jobType');
     Route::get('/license', LwLicense::class)->name('license');
+   // Route::get('/license_authorize', LwLicenseAuthorize::class)->name('license_authorize');
 });
 
 Route::middleware('auth')->group(function () {

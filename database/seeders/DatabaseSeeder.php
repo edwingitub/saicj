@@ -22,9 +22,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             DepartamentoSeeder::class,
             RoleSeeder::class,
+            EmployeeSeeder::class,
             UserSeeder::class,
             OfficeSeeder::class,
-            EmployeeSeeder::class,
             JobTypeSeeder::class,
             JobSeeder::class,
             LicenseTypeSeeder::class,

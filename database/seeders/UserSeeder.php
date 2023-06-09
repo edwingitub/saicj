@@ -20,20 +20,20 @@ class UserSeeder extends Seeder
 
         DB::table('users')->insert([
             'role_id'=>1,
-            'name' => 'Edwin Monterroza',
+            'employee_id' => 2,
             'email' => 'edwin.monterroza@icj.gob.sv',
             'password' => Hash::make('12345678'),
         ]);
 
         DB::table('users')->insert([
             'role_id'=>1,
-            'name' => 'Marvin Miranda',
+            'employee_id' => 3,
             'email' => 'marvin.miranda@icj.gob.sv',
             'password' => Hash::make('12345678'),
         ]);
 
-       
-       User::factory() ->count(50)->create();
-        
+
+       //User::factory() ->count(50)->create();
+
     }
 }
