@@ -1,82 +1,134 @@
 <div>
 
-    <div class="bg-white  font-bold text-gray-700 text-sm  fixed w-full pl-11 shadow-lg pt-2 pb-2">
-        <span><a href="{{url("dashboard")}}">Inicio</a> / <a href="{{url('menu_sistema')}}">Sistema</a> / Usuario</span>
-        <span class="float-right pr-14">SAICJ V.1</span><br>
+    <x-slot:links_rute >
+        <a href="{{url("dashboard")}}" class="text-indigo-400">    Inicio / </a>
+        <a href="{{url('menu_sistema')}}"  class="text-indigo-400"> Sistema / </a>
+        Usuario
+     </x-slot>
 
-        <div>
+     <x-slot:title >
+         Usuarios
+      </x-slot>
 
-            @if (session()->has('message'))
+      <!-- Mensaje -->
+      <div>
+        @if (session()->has('message'))
 
-                <div class="bg-green-600 text-green-200 p-2 ">
-                    <i class="fa fa-info-circle"></i>
+            <div class="bg-green-600 text-green-200 p-2 ">
+                <i class="fa fa-info-circle"></i>
+                {{ session('message') }}
+                <a href="#" wire:click="clear_message"><i class="fa fa-times fa-fw float-right mr-3"></i></a>
+            </div>
+        @endif
+     </div>
 
-                    {{ session('message') }}
 
-                    <a href="#" wire:click="clear_message"><i class="fa fa-times fa-fw float-right mr-10"></i></a>
 
-                </div>
 
-            @endif
 
-         </div>
-    </div>
 
+
+
+
+
+
+     <!-- links -->
     <div class="bg-indigo-300 pl-3 pr-10 text-sm fixed bottom-0 w-full"> {{ $list->links() }}</div>
 
 
-
-    <div class="border-b flex">
-
-    </div>
-
-
-    <!-- título -->
-    <div class="text-4xl mb-5   ml-11 mt-16 ">  Usuarios</div>
-
-    <div class="flex h-12 p-2 mb-2 ">
-    <!-- Nuevo -->
-    <a href="#" title="Nuevo" wire:click="create"
-    class="bg-indigo-500 text-white  p-1 w-24  {{$vtable}}  hover:opacity-80 rounded-lg mr-5 ml-10 pl-2 pr-2">
-        <i class="fa fa-plus fa-fw "></i> Nuevo
+<div class="flex bg-indigo-300 p-1 rounded-lg mr-10 {{$vtable}}">
+    <!-- regresar -->
+    <a href="{{url('menu_sistema')}}" title="Regresar"
+    class="bg-black text-white w-8 h-8 inline-flex justify-center items-center float-left  {{$vtable}}  hover:opacity-80 rounded-full m-1  ">
+        <i class="fa fa-arrow-left fa-fw "></i>
     </a>
 
-    <input id="search" name="search" wire:model="search" placeholder="Buscar"
-    class="p-0 pl-6  border-0 focus:outline-none w-full bg-blue-200 rounded-lg block flex-grow {{$vtable}}"
-     >
-    </div>
+
+<!-- nuevo -->
+    <a href="#" title="Nuevo" wire:click="create"
+    class="bg-indigo-600 text-white w-8 h-8 inline-flex justify-center items-center float-left   {{$vtable}}  hover:opacity-80   rounded-full m-1">
+        <i class="fa fa-plus fa-fw "></i>
+    </a>
+
+    <input id="search" name="search" wire:model="search" placeholder="Buscar" class="bg-indigo-100 rounded-full pl-5 pr-5 w-1/2 m-1 " >
+
+</div>
+
 
     <!--LISTA -->
-    <div class="flex flex-wrap gap-14 ml-10 p-2 {{$vtable}}">
+    <div class="pt-2 {{$vtable}}">
+
+
+         <!-- tabla pantalla completa -->
+        <table class="w-full text-center mr-10 rounded-lg overflow-hidden shadow-md max-sm:hidden">
+            <tr class="bg-gray-300 border-gray-400 font-bold text-xs ">
+                <th class="p-3"></th>
+                <th class="p-3">LOGIN</th>
+                <th class="p-3">NOMBRE</th>
+                <th class="p-3">ROL</th>
+                <th class="p-3">PUESTO</th>
+                <th class="p-3">UNIDAD ORGANIZATIVA</th>
+                <th class="p-3">OPCIONES</th>
+
+            </tr>
 
 
         @foreach ($list as $item)
+            <tr class="hover:bg-indigo-200 border-b bg-white">
+                <td>
+                    <img src='{{ asset($item->employee->photo)}}'
+                    onerror="this.src='{{asset('img/user.png')}}';"
+                    class="w-12 h-12  border-2 border-white rounded-full  object-cover m-2 "
+                     >
+                </td>
+                <td>  {{ $item->email}}   </td>
+                <td>  {{ $item->employee->first_name}}  {{ $item->employee->first_last_name}} </td>
+                <td>  {{ $item->role->name}}   </td>
+                <td>  {{ $item->employee->jobs[0]->name}}  </td>
+                <td>  {{ $item->employee->jobs[0]->office->name}}  </td>
+                <td>
+                    <x-icj.button-icon-update :my_id="$item->id" />
+                    <x-icj.button-icon-delete :my_id="$item->id" />
+                 </td>
 
-        <x-icj.item-folder>
-            <x-slot:header>
-                <img src='{{ asset($item->employee->photo)}}'
-            onerror="this.src='{{asset('img/user.png')}}';"
-            class="w-8 h-8  border-2 border-white rounded-full  object-cover mr-2 float-left"
-             >
-              {{ $item->employee->first_name}}  {{ $item->employee->first_last_name}}
-                <span class="float-right">{{$item->id}}</span>
-           </x-slot:header>
-            <x-slot:detail>
-                <span>{{$item->employee->jobs[0]->name}}</span><br>
-                <span>{{$item->employee->jobs[0]->office->name}}</span><br>
-                <span class="text-black "> <i class="fa fa-envelope fa-fw"></i> {{ $item->email }}</span><br>
-                <span class="text-black"> <i class="fa fa-lock fa-fw"></i> {{ $item->role->name }}</span>
-             </x-slot:detail>
-             <x-slot:options>
+            </tr>
 
-                  <x-icj.button-icon-update :my_id="$item->id" />
-                  <x-icj.button-icon-delete :my_id="$item->id" />
 
-             </x-slot:options>
+        @endforeach
 
-         </x-icj.item-folder>
+        </table>
+
+
+ <!-- tabla pantalla pequeña -->
+       <div class="sm:hidden pr-10">
+        @foreach ($list as $item)
+
+          <table class="mb-4 shadow-lg w-full bg-white rounded-lg overflow-hidden ">
+            <tr class=" bg-indigo-100 border-b ">
+                <td colspan="2" class="borde-2">
+                     <img src='{{ asset($item->employee->photo)}}'
+                    onerror="this.src='{{asset('img/user.png')}}';"
+                    class="w-24 h-24  border-2 border-white rounded-lg  object-cover m-auto"
+                     >
+                </td>
+            </tr>
+            <tr class=" border-gray-400">
+                <td class=" border-t-2 font-bold bg-gray-300 p-2">Login</td>
+                <td class="border-t-2 p-2">
+                    {{$item->email}}
+                </td>
+            </tr>
+            <tr class=" border-gray-400">
+                <td class=" border-t-2 font-bold bg-gray-300 p-2">Nombre</td>
+                <td class="border-t-2 p-2">
+                    {{$item->employee->first_name}} {{$item->employee->first_last_name}}
+                </td>
+            </tr>
+          </table>
 
           @endforeach
+        </div>
+
     </div> <!-- fin lista -->
 
 

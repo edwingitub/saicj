@@ -189,9 +189,27 @@
     <!-- include('layouts.navigation') -->
 
 
-    <div class="ml-10">
-        <main>
+    <div class="pl-10">
+
+        <!-- Ruta -->
+          <div class="p-1 pl-4 pt-3 font-bold bg-black text-gray-300  m-0 w-full ">
+            {{ $links_rute }}
+            <span class="float-right pr-14">SAICJ V.1</span>
+          </div>
+
+
+
+
+         <!-- Principal -->
+        <main class="pl-4">
+
+                <!-- titulo -->
+          <div class="text-4xl m-2 mt-4 mb-4">
+            {{ $title }}
+          </div>
+
             {{ $slot }}
+
         </main>
     </div>
 
