@@ -36,7 +36,7 @@
     <div class="bg-indigo-300 pl-3 pr-10 text-sm fixed bottom-0 w-full"> {{ $list->links() }}</div>
 
 
-<div class="flex bg-indigo-300 p-1 rounded-lg mr-10 {{$vtable}}">
+<div class="flex bg-indigo-300 p-1 rounded-lg mr-4 {{$vtable}}">
     <!-- regresar -->
     <a href="{{url('menu_sistema')}}" title="Regresar"
     class="bg-black text-white w-8 h-8 inline-flex justify-center items-center float-left  {{$vtable}}  hover:opacity-80 rounded-full m-1  ">
@@ -100,15 +100,15 @@
 
 
  <!-- tabla pantalla pequeña -->
-       <div class="sm:hidden pr-10">
+       <div class="sm:hidden pr-4">
         @foreach ($list as $item)
 
           <table class="mb-4 shadow-lg w-full bg-white rounded-lg overflow-hidden ">
             <tr class=" bg-indigo-100 border-b ">
-                <td colspan="2" class="borde-2">
+                <td colspan="2" class="borde-2 p-2">
                      <img src='{{ asset($item->employee->photo)}}'
                     onerror="this.src='{{asset('img/user.png')}}';"
-                    class="w-24 h-24  border-2 border-white rounded-lg  object-cover m-auto"
+                    class="w-20 h-20  border-2 border-white rounded-full  object-cover m-auto"
                      >
                 </td>
             </tr>
@@ -124,6 +124,26 @@
                     {{$item->employee->first_name}} {{$item->employee->first_last_name}}
                 </td>
             </tr>
+            <tr class=" border-gray-400">
+                <td class=" border-t-2 font-bold bg-gray-300 p-2">Puesto</td>
+                <td class="border-t-2 p-2">
+                    {{$item->employee->jobs[0]->name}}
+                </td>
+            </tr>
+            <tr class=" border-gray-400">
+                <td class=" border-t-2 font-bold bg-gray-300 p-2">Oficina</td>
+                <td class="border-t-2 p-2">
+                    {{$item->employee->jobs[0]->office->name}}
+                </td>
+            </tr>
+            <tr class=" border-gray-400">
+                <td class=" border-t-2 font-bold bg-gray-300 p-2">Opciones</td>
+                <td class="border-t-2 p-2">
+                    <x-icj.button-icon-update :my_id="$item->id" />
+                    <x-icj.button-icon-delete :my_id="$item->id" />
+                </td>
+            </tr>
+
           </table>
 
           @endforeach

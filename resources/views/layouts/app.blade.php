@@ -192,9 +192,9 @@
     <div class="pl-10">
 
         <!-- Ruta -->
-          <div class="p-1 pl-4 pt-3 font-bold bg-black text-gray-300  m-0 w-full ">
+          <div class="p-1 pl-4 pt-3 font-bold text-xs bg-black text-gray-300  m-0 w-full ">
             {{ $links_rute }}
-            <span class="float-right pr-14">SAICJ V.1</span>
+            <span class="float-right pr-2">SAICJ Ver.1.0</span>
           </div>
 
 

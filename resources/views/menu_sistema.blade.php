@@ -3,7 +3,7 @@
         <span><a href="{{url('dashboard')}}">Inicio</a> / Sistema </span>
         <span class="float-right pr-14">SAICJ</span><br>
 
-        
+
 
     </div>
 
@@ -16,31 +16,38 @@
 
 
 
-       
+
         <a href="{{ url('user') }}" >
             <div class=" overflow-hidden w-60 flex flex-col justify-center text-center hover:scale-110">
                 <i class="fas fa-folder fa-fw text-6xl m-auto text-orange-500 "></i>
                 <span class="text-1xl">Usuarios</span>
-            </div>  
+            </div>
+        </a>
+
+        <a href="{{ url('user') }}" >
+            <div class=" overflow-hidden w-60 flex flex-col justify-center text-center hover:scale-110">
+                <i class="fas fa-eye fa-fw text-6xl m-auto text-orange-500 "></i>
+                <span class="text-1xl">Bitácora</span>
+            </div>
         </a>
 <!--
         <a href="{{ url('user') }}" >
             <div class=" overflow-hidden w-60 flex flex-col justify-center text-center hover:scale-110">
                 <i class="fas fa-folder fa-fw text-6xl m-auto text-orange-500 "></i>
                 <span class="text-1xl">Roles</span>
-            </div>  
+            </div>
         </a>
 
         <a href="{{ url('user') }}" >
             <div class=" overflow-hidden w-60 flex flex-col justify-center text-center hover:scale-110">
                 <i class="fas fa-folder fa-fw text-6xl m-auto text-orange-500 "></i>
                 <span class="text-1xl">Menú</span>
-            </div>  
+            </div>
         </a>
 
     -->
 
-           
+
 
 
 
