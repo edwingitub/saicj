@@ -7,6 +7,11 @@ module.exports = {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
     ],
+    server: {
+        hmr: {
+            host: '/saicj/public/',
+        }
+    },
 
     theme: {
         extend: {
