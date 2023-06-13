@@ -1,18 +1,14 @@
 <x-app-layout>
-    <div class="bg-gray-700 shadow-lg font-bold text-gray-300 text-sm p-2 fixed w-full">
-        <span>Inicio</span>
-        <span class="float-right pr-14">SAICJ V.1</span><br>
+    <x-slot:links_rute >
+       Inicio
+    </x-slot>
 
-
-
-    </div>
-
+    <x-slot:title >
+        Inicio
+     </x-slot>
 
     <div class="flex"></div>
-    <div class="text-4xl mb-10 ml-11 mt-24">Inicio</div>
-
-
-    <div class="ml-12 flex flex-wrap  gap-10 w-1/2">
+    <div class="ml-2 flex flex-wrap  gap-10 w-2/3">
 
        @if(in_array(Auth::user()->role->id, array(1)))
         <a href="{{ url('menu_sistema') }}" >

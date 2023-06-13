@@ -3,7 +3,7 @@
     <div class=" hover:scale-105 hover:shadow-2xl   border-{{$color}}-400 bg-white rounded-2xl overflow-hidden ">
 
         <!-- tema -->
-        <div class=" font-bold  text-lg text-{{$color}}-900 p-4   bg-{{$color}}-400 border-b-2  border-{{$color}}-400">
+        <div class=" font-bold  text-lg text-{{$color}}-900 p-2   bg-{{$color}}-400 border-b-2  border-{{$color}}-400">
           {{$header}}
         </div>
          <!-- detalle -->
