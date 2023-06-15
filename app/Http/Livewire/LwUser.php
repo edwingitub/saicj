@@ -32,10 +32,8 @@ public $vmode='insert';
 
 protected $rules = [
 
-
   'email' => 'required|email',
   'password' => 'required|min:8',
-
   'password_confirm' =>'required|same:password'
 ];
 
@@ -79,13 +77,16 @@ public function  create(){
 
 
 public function  edit($id){
+
+
+
 $obj=User::find($id);
 $this->my_id=$obj->id;
 $this->employee_id=$obj->employee_id;
 $this->email=$obj->email;
 $this->role_id=$obj->role_id;
 $this->password="";
-//$this->password=$obj->password;
+$this->password_confirm="";
 
 $this->vtable='hidden';
 $this->vform="block";
@@ -94,14 +95,21 @@ $this->vmode="update";
 
 public function update(){
 
-  $this->validate();
+    $validatedData = $this->validate([
+            'email' => 'required|email',
+            'password_confirm' =>'same:password',
+        ]);
 
    $obj= User::find($this->my_id);
    $obj->employee_id=$this->employee_id;
    $obj->email=$this->email;
    $obj->role_id=$this->role_id;
-   $obj->password=Hash::make($this->password);
-   $obj->save();
+
+   if(strlen($this->password)>0){
+    $obj->password=Hash::make($this->password);
+   }
+
+   $obj->save($validatedData);
    $this->vtable='block';
    $this->vform="hidden";
    $this->vmode="insert";

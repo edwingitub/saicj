@@ -7,6 +7,10 @@
      </x-slot>
 
      <x-slot:title >
+        <a href="{{url('menu_sistema')}}" title="Regresar"
+        class="bg-black text-white text-sm w-8 h-8 inline-flex justify-center items-center float-left  {{$vtable}}  hover:opacity-80 rounded-full m-1  ">
+            <i class="fa fa-arrow-left fa-fw "></i>
+        </a>
          Usuarios
       </x-slot>
 
@@ -36,12 +40,7 @@
     <div class="bg-indigo-300 pl-3 pr-10 text-sm fixed bottom-0 w-full"> {{ $list->links() }}</div>
 
 
-<div class="flex bg-indigo-300 p-1 rounded-lg mr-4 {{$vtable}}">
-    <!-- regresar -->
-    <a href="{{url('menu_sistema')}}" title="Regresar"
-    class="bg-black text-white w-8 h-8 inline-flex justify-center items-center float-left  {{$vtable}}  hover:opacity-80 rounded-full m-1  ">
-        <i class="fa fa-arrow-left fa-fw "></i>
-    </a>
+<div class="flex bg-indigo-300 p-1 rounded-lg {{$vtable}}">
 
 
 <!-- nuevo -->

@@ -35,28 +35,28 @@
 
         <a href="{{ url('menu_sistema') }}" >
             <div class=" overflow-hidden w-60 flex flex-col justify-center text-center  hover:opacity-80 hover:scale-105">
-                <i class="fas fa-cube fa-fw text-6xl m-auto text-orange-500 "></i>
+                <i class="fas fa-cube fa-fw text-6xl m-auto text-red-500 "></i>
                 <span class="text-1xl"> Activo Fijo</span>
             </div>
         </a>
 
         <a href="{{ url('menu_sistema') }}" >
             <div class=" overflow-hidden w-60 flex flex-col justify-center text-center  hover:opacity-80 hover:scale-105">
-                <i class="fas fa-cube fa-fw text-6xl m-auto text-orange-500 "></i>
+                <i class="fas fa-cube fa-fw text-6xl m-auto text-red-500 "></i>
                 <span class="text-1xl">  Vehículos</span>
             </div>
         </a>
 
         <a href="{{ url('menu_sistema') }}" >
             <div class=" overflow-hidden w-60 flex flex-col justify-center text-center  hover:opacity-80 hover:scale-105">
-                <i class="fas fa-cube fa-fw text-6xl m-auto text-orange-500 "></i>
+                <i class="fas fa-cube fa-fw text-6xl m-auto text-red-500 "></i>
                 <span class="text-1xl">   Equipo Informática</span>
             </div>
         </a>
 
         <a href="{{ url('menu_sistema') }}" >
             <div class=" overflow-hidden w-60 flex flex-col justify-center text-center  hover:opacity-80 hover:scale-105">
-                <i class="fas fa-cube fa-fw text-6xl m-auto text-orange-500 "></i>
+                <i class="fas fa-cube fa-fw text-6xl m-auto text-red-500 "></i>
                 <span class="text-1xl">   Servicios</span>
             </div>
         </a>
@@ -64,7 +64,7 @@
 
         <a href="{{ url('menu_sistema') }}" >
             <div class=" overflow-hidden w-60 flex flex-col justify-center text-center  hover:opacity-80 hover:scale-105">
-                <i class="fas fa-cube fa-fw text-6xl m-auto text-orange-500 "></i>
+                <i class="fas fa-cube fa-fw text-6xl m-auto text-red-500 "></i>
                 <span class="text-1xl">    Planificación</span>
             </div>
         </a>

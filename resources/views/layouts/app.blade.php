@@ -189,7 +189,7 @@
     <!-- include('layouts.navigation') -->
 
 
-    <div class="pl-10">
+    <div class="pl-10 pr-5">
 
         <!-- Ruta -->
           <div class="p-1 pl-4 pt-3 font-bold text-xs bg-black text-gray-300  m-0 w-full ">
@@ -204,7 +204,7 @@
         <main class="pl-4">
 
                 <!-- titulo -->
-          <div class="text-4xl m-2 mt-4 mb-4">
+          <div class="text-4xl  mt-4 mb-4">
             {{ $title }}
           </div>
 
