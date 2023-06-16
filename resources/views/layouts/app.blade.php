@@ -72,8 +72,6 @@
         class=" h-screen w-10 menu bg-black text-white px-1 py-0 flex items-top nunito s fixed shadow overflow-hidden">
 
 
-
-
         <ul class="list-reset font-bold">
             <li class="my-2 md:my-0">
                 <a href="#"
@@ -86,20 +84,21 @@
                         {{ Auth::user()->employee->first_name }}  {{ Auth::user()->employee->first_last_name }}<br>
                        <b> {{ Auth::user()->role->name }}</b>
                      </span>
-
-
-
-
                 </a>
             </li>
 
+
+
+
             <li class="my-2 md:my-0">
                 <a href="{{ url('dashboard') }}"
-                    class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-indigo-100 ">
+                    class="py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-indigo-100 ">
                     <i class="fas fa-home fa-fw mr-3"></i><span
                         class="w-full inline-block pb-1 md:pb-0 text-sm">Inicio</span>
                 </a>
             </li>
+
+
 
 
             @if(in_array(Auth::user()->role->id, array(1)))
@@ -119,13 +118,19 @@
                         class="w-full inline-block pb-1 md:pb-0 text-sm">Administración</span>
                 </a>
             </li>
-            <li class="my-2 md:my-0">
-                <a href="{{ url('menu_rrhh') }}"
+
+            <li class="w-96   my-2 md:my-0" x-data="{ open: false }" >
+                <a href="# " @click="open = ! open"
                     class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-indigo-100 ">
                     <i class="fas fa-users fa-fw mr-3"></i><span class="w-full inline-block pb-1 md:pb-0 text-sm">R.
                         Humanos</span>
                 </a>
+                <ul class="text-xs ml-2"  x-show.transition.origin.top.left="open" @click.outside="open = false"  transition ease-in-out delay-150>
+                    <li><a href=# class=""><i class="fa fa-address-card fa-fw mr-3 "></i> <span> Permisos</span></a></li>
+                    <li><a href=# class=""><i class="fas fa-car fa-fw mr-3 "></i> <span>Viáticos </span></li>
+                </ul>
             </li>
+
             <li class="my-2 md:my-0">
                 <a href="#"
                     class="block py-1 md:py-3 pl-1 align-middle text-gray-500 no-underline hover:text-indigo-100 ">
@@ -189,19 +194,29 @@
     <!-- include('layouts.navigation') -->
 
 
-    <div class="pl-10 pr-5">
+    <div class="pl-10">
 
         <!-- Ruta -->
-          <div class="p-1 pl-4 pt-3 font-bold text-xs bg-black text-gray-300  m-0 w-full ">
-            {{ $links_rute }}
-            <span class="float-right pr-2">SAICJ Ver.1.0</span>
+          <div class="p-1 pl-4  font-bold text-xs bg-black text-gray-300 pt-2 m-0 w-full h-10 ">
+
+            <span class="align-middle">{{ $links_rute }}</span>
+
+            <span class="float-right  ">
+                <a href="#"
+                class="block  pl-1 align-middle text-gray-200 no-underline hover:text-indigo-100">
+                <img class="w-6 h-6 rounded-full inline-block  object-cover" src="{{asset(Auth::user()->employee->photo)}}"
+                onerror="this.src='{{asset('img/user.png')}}';"
+                    alt="Avatar of User">
+
+            </a>
+            </span>
           </div>
 
 
 
 
          <!-- Principal -->
-        <main class="pl-4">
+        <main class="pl-4 pr-4">
 
                 <!-- titulo -->
           <div class="text-4xl  mt-4 mb-4">
