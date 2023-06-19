@@ -40,7 +40,7 @@ Route::get('/qr/{id}', function (string $id) {
 Route::get('/dashboard', function () {
     return view('dashboard');
 
-})->middleware(['auth', 'verified','cors'])->name('dashboard');
+})->middleware(['auth', 'verified','cors','auth.role:1|2'])->name('dashboard');
 
 
 

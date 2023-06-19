@@ -1,9 +1,8 @@
 <div>
 
     <x-slot:links_rute >
-        <a href="{{url("dashboard")}}" class="text-indigo-400">    Inicio / </a>
-        <a href="{{url('menu_sistema')}}"  class="text-indigo-400"> Sistema / </a>
-        Usuario
+        <a href="{{url('menu_sistema')}}"  class="text-indigo-400"> / Sistema </a>
+        / Usuario
      </x-slot>
 
      <x-slot:title >
@@ -18,7 +17,7 @@
       <div>
         @if (session()->has('message'))
 
-            <div class="bg-green-600 text-green-200 p-2 ">
+            <div class="bg-green-600 text-green-200 p-2 mb-2 rounded-lg">
                 <i class="fa fa-info-circle"></i>
                 {{ session('message') }}
                 <a href="#" wire:click="clear_message"><i class="fa fa-times fa-fw float-right mr-3"></i></a>
@@ -67,6 +66,7 @@
                 <th class="p-3">ROL</th>
                 <th class="p-3">PUESTO</th>
                 <th class="p-3">UNIDAD ORGANIZATIVA</th>
+                <th class="p-3">ACTIVO</th>
                 <th class="p-3">OPCIONES</th>
 
             </tr>
@@ -83,8 +83,16 @@
                 <td>  {{ $item->email}}   </td>
                 <td>  {{ $item->employee->first_name}}  {{ $item->employee->first_last_name}} </td>
                 <td>  {{ $item->role->name}}   </td>
-                <td>  {{ $item->employee->jobs[0]->name}}  </td>
-                <td>  {{ $item->employee->jobs[0]->office->name}}  </td>
+                 @php
+                  //si no tienen empleado asociado.
+                    $job_name=    (count($item->employee->jobs)>0)? $item->employee->jobs[0]->name:"";
+                    $office_name= (count($item->employee->jobs)>0)? $item->employee->jobs[0]->office->name:"";
+
+                 @endphp
+
+                <td>  {{ $job_name}}  </td>
+                <td>  {{ $office_name}}  </td>
+                <td>  {{ $item->active}}   </td>
                 <td>
                     <x-icj.button-icon-update :my_id="$item->id" />
                     <x-icj.button-icon-delete :my_id="$item->id" />
@@ -123,16 +131,23 @@
                     {{$item->employee->first_name}} {{$item->employee->first_last_name}}
                 </td>
             </tr>
+
+            @php
+            //si no tienen empleado asociado.
+              $job_name=    (count($item->employee->jobs)>0)? $item->employee->jobs[0]->name:"";
+              $office_name= (count($item->employee->jobs)>0)? $item->employee->jobs[0]->office->name:"";
+            @endphp
+
             <tr class=" border-gray-400">
                 <td class=" border-t-2 font-bold bg-gray-300 p-2">Puesto</td>
                 <td class="border-t-2 p-2">
-                    {{$item->employee->jobs[0]->name}}
+                    {{$job_name}}
                 </td>
             </tr>
             <tr class=" border-gray-400">
                 <td class=" border-t-2 font-bold bg-gray-300 p-2">Oficina</td>
                 <td class="border-t-2 p-2">
-                    {{$item->employee->jobs[0]->office->name}}
+                    {{ $office_name}}
                 </td>
             </tr>
             <tr class=" border-gray-400">
@@ -176,6 +191,8 @@
 
         <x-icj.input-txt label="Contraseña" value="password" type="password" />
         <x-icj.input-txt label="Repita Contraseña" value="password_confirm" type="password" />
+
+        <x-icj.input-selectyesnot label="Activo" value="active"/>
 
 
 

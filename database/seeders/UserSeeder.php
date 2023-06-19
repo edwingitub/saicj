@@ -20,14 +20,14 @@ class UserSeeder extends Seeder
 
         DB::table('users')->insert([
             'role_id'=>1,
-            'employee_id' => 2,
+            'employee_id' => 4,
             'email' => 'edwin.monterroza@icj.gob.sv',
             'password' => Hash::make('12345678'),
         ]);
 
         DB::table('users')->insert([
             'role_id'=>1,
-            'employee_id' => 3,
+            'employee_id' => 2,
             'email' => 'marvin.miranda@icj.gob.sv',
             'password' => Hash::make('12345678'),
         ]);

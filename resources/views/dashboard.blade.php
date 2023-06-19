@@ -1,10 +1,10 @@
 <x-app-layout>
     <x-slot:links_rute >
-       Inicio
+
     </x-slot>
 
     <x-slot:title >
-        Inicio
+       Sistema Administrativo ICJ (SAICJ)
      </x-slot>
 
     <div class="flex"></div>

@@ -1,8 +1,7 @@
 <x-app-layout>
 
     <x-slot:links_rute >
-        <a href="{{url("dashboard")}}" class="text-indigo-400">    Inicio / </a>
-         Sistema
+         / Sistema
      </x-slot>
 
      <x-slot:title >
