@@ -77,7 +77,7 @@
                 <a href="#"
                     class="block py-1 md:py-3 pl-1 align-middle text-gray-200 no-underline hover:text-indigo-100">
                     <img class="w-5 h-5 rounded-full inline-block mr-2 object-cover" src="{{asset(Auth::user()->employee->photo)}}"
-                    onerror="this.src='{{asset('img/user.png')}}';"
+                    onerror="this.src='https://ui-avatars.com/api/?background=random&name={{Auth::user()->employee->first_name}}+{{Auth::user()->employee->first_last_name}}';"
                         alt="Avatar of User">
 
                     <span class="w-full inline-block pb-1 md:pb-0 text-xs text-white">
@@ -113,7 +113,7 @@
 
                 <ul class="text-sm text-indigo-300   bg-gray-800 transition ease-in-out delay-150" @click.outside="open = false" x-show.transition.origin.top.left="open">
                     <li class="py-2"><a href={{ url('user') }} class="hover:text-indigo-100"><i class="fa fa-user fa-fw mr-3 ml-1 "></i> <span> Usuarios</span></a></li>
-                    <li class="py-2" ><a href=# class="hover:text-indigo-100"><i class="fas fa-eye fa-fw mr-3 ml-1"></i> <span>Bitácora </span></a></li>
+                    <li class="py-2" ><a href={{ url('log') }} class="hover:text-indigo-100"><i class="fas fa-eye fa-fw mr-3 ml-1"></i> <span>Bitácora </span></a></li>
                 </ul>
             </li>
             @endif
@@ -184,7 +184,7 @@
                         class="w-full inline-block pb-1 md:pb-0 text-sm">Planificación</span>
                 </a>
             </li>
-
+           {{--
             <li class="my-2 text-sm">
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
@@ -198,6 +198,8 @@
                     </a>
                 </form>
             </li>
+          --}}
+
         </ul>
 
     </div>

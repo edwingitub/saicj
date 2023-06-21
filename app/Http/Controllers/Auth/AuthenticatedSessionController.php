@@ -31,7 +31,6 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         $log=new Log();
-        $log->date=now();
         $log->user=Auth::user()->email;
         $log->form ="Login";
         $log->action="Login";

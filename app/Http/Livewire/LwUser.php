@@ -23,7 +23,7 @@ public $email="";
 public $role_id="";
 public $password="";
 public $password_confirm="";
-public $active="";
+public $active=1;
 
 public $cat_roles="";
 public $cat_employees="";
@@ -67,15 +67,13 @@ public function  create(){
    $obj->email=$this->email;
    $obj->role_id=$this->role_id;
    $obj->password=Hash::make($this->password);
-   $obj->password=Hash::make($this->password);
    $obj->active=$this->active;
    $obj->save();
 
    $log=new Log();
-   $log->date=now();
    $log->user=Auth::user()->email;
    $log->form ="Users";
-   $log->action="Save";
+   $log->action="store";
    $log->record_id=$obj->id;
    $log->record_complete=$obj;
    $log->save();
@@ -83,7 +81,7 @@ public function  create(){
    $this->vtable='block';
    $this->vform="hidden";
    $this->vmode="insert";
-
+   $this->default();
    session()->flash('message', 'Registro guardado');
 
   }
@@ -128,10 +126,9 @@ public function update(){
    $obj->save($validatedData);
 
    $log=new Log();
-   $log->date=now();
    $log->user=Auth::user()->email;
    $log->form ="Users";
-   $log->action="Update";
+   $log->action="update";
    $log->record_id=$obj->id;
    $log->record_complete=$obj;
    $log->save();
@@ -150,10 +147,9 @@ public function update(){
     public function delete(User $obj){
 
         $log=new Log();
-        $log->date=now();
         $log->user=Auth::user()->email;
         $log->form ="Users";
-        $log->action="Delete";
+        $log->action="delete";
         $log->record_id=$obj->id;
         $log->record_complete=$obj;
         $log->save();
@@ -175,7 +171,7 @@ public function update(){
     private function default(){
 
       $this->resetValidation();
-      $this->reset(['my_id','employee_id','email','password','password_confirm','role_id','vform','vtable','vmode']);
+      $this->reset(['my_id','employee_id','email','password','password_confirm','role_id','active','vform','vtable','vmode']);
 
     }
 

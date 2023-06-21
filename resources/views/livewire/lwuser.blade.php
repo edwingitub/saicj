@@ -73,12 +73,19 @@
 
 
         @foreach ($list as $item)
-            <tr class="hover:bg-indigo-200 border-b bg-white">
+            <tr class="hover:bg-indigo-100 border-b bg-white">
                 <td>
+                     {{--
                     <img src='{{ asset($item->employee->photo)}}'
-                    onerror="this.src='{{asset('img/user.png')}}';"
+                    onerror="this.src='https://ui-avatars.com/api/?background=random&color=random&name={{$item->employee->first_name}}+{{$item->employee->first_last_name}}';"
                     class="w-12 h-12  border-2 border-white rounded-full  object-cover m-2 "
                      >
+                     --}}
+                     <img src='{{ asset($item->employee->photo)}}'
+                    onerror="this.src='https://api.dicebear.com/6.x/miniavs/svg?seed={{$item->employee->first_name}}+{{$item->employee->first_last_name}}&backgroundColor=65c9ff,ffdfbf,ffd5dc,d1d4f9,c0aede,b6e3f4';"
+                    class="w-12 h-12  border-2 border-white rounded-full  object-cover m-2 "
+                     >
+
                 </td>
                 <td>  {{ $item->email}}   </td>
                 <td>  {{ $item->employee->first_name}}  {{ $item->employee->first_last_name}} </td>
