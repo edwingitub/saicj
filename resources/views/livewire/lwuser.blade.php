@@ -154,7 +154,7 @@
 
      <!-- formulario -->
 
-    <div class="{{$vform}} bg-white   flex flex-col shadow-lg sm:w-2/4">
+    <div class="{{$vform}} bg-white   flex flex-col shadow-lg sm:w-2/4 rounded-lg overflow-hidden ">
 
         <div class="bg-indigo-300 font-bold p-2 text-center">
             @if($vmode=="insert")
@@ -190,8 +190,10 @@
 
           </div>
        </div>
-
-
-
-
+       <br>
+       <br>
+       <br>
+       <br>
+       <br>
+       <br>
 </div>
