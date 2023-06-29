@@ -17,7 +17,7 @@ class AuthRole
     public function handle(Request $request, Closure $next, $array): Response
     {
         $arrayRole = explode('|', $array);
-        if (Auth::check() && in_array(Auth::user()->role->id, $arrayRole)) {
+        if (Auth::check() && in_array(Auth::user()->role->id, $arrayRole) && Auth::user()->active==1) {
             return $next($request);
         } else {
             Auth::logout();

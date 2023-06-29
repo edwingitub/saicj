@@ -2,11 +2,13 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Log;
 use App\Models\Role;
 use App\Models\User;
 use Livewire\Component;
 use App\Models\Employee;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class LwUser extends Component
@@ -21,6 +23,7 @@ public $email="";
 public $role_id="";
 public $password="";
 public $password_confirm="";
+public $active=1;
 
 public $cat_roles="";
 public $cat_employees="";
@@ -60,16 +63,25 @@ public function  create(){
   $this->validate();
 
    $obj= new User();
-   $obj->name=$this->employee_id;
+   $obj->employee_id=$this->employee_id;
    $obj->email=$this->email;
    $obj->role_id=$this->role_id;
    $obj->password=Hash::make($this->password);
+   $obj->active=$this->active;
    $obj->save();
+
+   $log=new Log();
+   $log->user=Auth::user()->email;
+   $log->form ="Users";
+   $log->action="store";
+   $log->record_id=$obj->id;
+   $log->record_complete=$obj;
+   $log->save();
 
    $this->vtable='block';
    $this->vform="hidden";
    $this->vmode="insert";
-
+   $this->default();
    session()->flash('message', 'Registro guardado');
 
   }
@@ -87,6 +99,8 @@ $this->email=$obj->email;
 $this->role_id=$obj->role_id;
 $this->password="";
 $this->password_confirm="";
+$this->active=$obj->active;
+
 
 $this->vtable='hidden';
 $this->vform="block";
@@ -108,8 +122,19 @@ public function update(){
    if(strlen($this->password)>0){
     $obj->password=Hash::make($this->password);
    }
-
+   $obj->active=$this->active;
    $obj->save($validatedData);
+
+   $log=new Log();
+   $log->user=Auth::user()->email;
+   $log->form ="Users";
+   $log->action="update";
+   $log->record_id=$obj->id;
+   $log->record_complete=$obj;
+   $log->save();
+
+
+
    $this->vtable='block';
    $this->vform="hidden";
    $this->vmode="insert";
@@ -119,8 +144,20 @@ public function update(){
 
 
 
-    public function delete(User $user){
-      $user->delete();
+    public function delete(User $obj){
+
+        $log=new Log();
+        $log->user=Auth::user()->email;
+        $log->form ="Users";
+        $log->action="delete";
+        $log->record_id=$obj->id;
+        $log->record_complete=$obj;
+        $log->save();
+
+      $obj->delete();
+
+
+
       session()->flash('message', 'Registro eliminado');
 
     }
@@ -134,7 +171,7 @@ public function update(){
     private function default(){
 
       $this->resetValidation();
-      $this->reset(['my_id','employee_id','email','password','password_confirm','role_id','vform','vtable','vmode']);
+      $this->reset(['my_id','employee_id','email','password','password_confirm','role_id','active','vform','vtable','vmode']);
 
     }
 

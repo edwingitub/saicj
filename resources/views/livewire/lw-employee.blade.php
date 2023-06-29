@@ -76,7 +76,7 @@
        <tr class="hover:bg-indigo-200 border-b bg-white">
            <td>
                <img src='{{ asset($item->photo)}}'
-               onerror="this.src='{{asset('img/user.png')}}';"
+               onerror="this.src='https://api.dicebear.com/6.x/personas/svg?seed={{$item->first_name}}+{{$item->first_last_name}}&backgroundColor=65c9ff,ffdfbf,ffd5dc,d1d4f9,c0aede,b6e3f4';"
                class="w-12 h-12  border-2 border-white rounded-full  object-cover m-2 "
                 >
            </td>

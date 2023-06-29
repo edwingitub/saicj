@@ -2,6 +2,8 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
+     <div class="text-center text-4xl"> Sistema Administrativo ICJ</div>
+    <img src="img/logoicj.png" class="w-full">
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
@@ -39,9 +41,11 @@
                 </a>
             @endif
 
-            <x-primary-button class="ml-3">
-                {{ __('Log in') }}
-            </x-primary-button>
+            <button class="p-2 rounded-lg bg-black text-white text-center w-full">
+                Entrar
+            </button>
+
+
         </div>
     </form>
 </x-guest-layout>

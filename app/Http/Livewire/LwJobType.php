@@ -2,12 +2,14 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
-use App\Models\JobType;
 use App\Models\Job;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\DB;
+use App\Models\Log;
+use App\Models\JobType;
+use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Builder;
 
 class LwJobType extends Component
@@ -15,14 +17,17 @@ class LwJobType extends Component
     use WithPagination;
 
 //variables de busqueda
-public $search="";
-public $search_subaccount="";
+
+public $search_account="";
+public $search_name="";
+public $search_salary="";
+
 
 //Variables de campos
 public $my_id=0;
 public $account="";
 public $name="";
-public $salary="";
+public $salary="0.00";
 public $amount=0;
 
 //Variables de vista
@@ -67,6 +72,14 @@ public function  create(){
    $obj->salary=$this->salary;
    $obj->amount=$this->amount;
    $obj->save();
+
+   $log=new Log();
+   $log->user=Auth::user()->email;
+   $log->form ="JobType";
+   $log->action="store";
+   $log->record_id=$obj->id;
+   $log->record_complete=$obj;
+   $log->save();
 
 
 
@@ -120,6 +133,14 @@ public function update(){
    $obj->salary=$this->salary;
    $obj->save();
 
+   $log=new Log();
+   $log->user=Auth::user()->email;
+   $log->form ="JobType";
+   $log->action="update";
+   $log->record_id=$obj->id;
+   $log->record_complete=$obj;
+   $log->save();
+
 
    $this->vtable='block';
    $this->vform="hidden";
@@ -133,11 +154,20 @@ public function update(){
     public function delete(JobType $obj){
       $jobs=Job::where('job_type_id',$obj->id)->count();
       if($jobs==0){
+
+        $log=new Log();
+        $log->user=Auth::user()->email;
+        $log->form ="JobType";
+        $log->action="delete";
+        $log->record_id=$obj->id;
+        $log->record_complete=$obj;
+        $log->save();
+
         $obj->delete();
         session()->flash('message', 'Registro eliminado');
       }
       else {
-        session()->flash('message', 'No se puede borrar se usa en puestos funcionales');
+        session()->flash('message', 'No se puede borrar. Se usa en puestos funcionales');
       }
     }
 
@@ -188,7 +218,11 @@ public function update(){
     public function render()
     {
 
-       $list=JobType::orderBy('account',"asc") ->paginate(15);
+       $list=JobType::where("account","like","%".$this->search_account."%")
+                      ->where("name","like","%".$this->search_name."%")
+                      ->where("salary","like","%".$this->search_salary."%")
+                      ->orderBy('account',"asc")
+                      ->paginate(15);
 
         return view('livewire.lw-job-type')
                ->with("list",$list);

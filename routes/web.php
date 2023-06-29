@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\LwJob;
+use App\Http\Livewire\LwLog;
 use App\Http\Livewire\LwUser;
 use App\Http\Livewire\LwOffice;
 use App\Http\Livewire\LwJobType;
@@ -40,7 +41,7 @@ Route::get('/qr/{id}', function (string $id) {
 Route::get('/dashboard', function () {
     return view('dashboard');
 
-})->middleware(['auth', 'verified','cors'])->name('dashboard');
+})->middleware(['auth', 'verified','cors','auth.role:1|2'])->name('dashboard');
 
 
 
@@ -53,6 +54,7 @@ Route::middleware('auth', 'verified','cors')->group(function () {
     Route::get('/menu_administracion', function () {return view('menu_administracion'); })->name('menu_administracion');
     Route::get('/menu_rrhh', function () {return view('menu_rrhh'); })->name('menu_rrhh');
 
+    Route::get('/log', LwLog::class)->name('log');
     Route::get('/user', LwUser::class)->name('user');
     Route::get('/office', LwOffice::class)->name('office');
     Route::get('/employee', LwEmployee::class)->name('employee');
